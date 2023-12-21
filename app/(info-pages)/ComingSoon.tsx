@@ -16,24 +16,29 @@ const ComingSoon = () => {
     >
       <Container
         style={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
-          alignItems: "center",
+          display: "grid",
+          placeContent: "center",
+          textAlign: "center",
+          gap: "2rem",
           height: "100%",
         }}
       >
-        <Image
-          alt="Abrasoft Laundry Logo"
-          src={CompanyLogo}
-          width={0}
-          height={0}
-          style={{ width: 200, height: "auto" }}
-        />
-        <h1 style={{ marginBottom: "2rem" }}>{"Coming Soon"}</h1>
-        <h2 style={{ marginBottom: "2rem" }}>
-          {"Abrasoft Laundry Management App"}
-        </h2>
+        <h1>
+          <Image
+            alt="Abrasoft Laundry Image"
+            src={CompanyLogo}
+            width={0}
+            height={0}
+            style={{
+              width: "100%",
+              maxWidth: 200,
+              height: "auto",
+              margin: "0 auto",
+            }}
+          />
+        </h1>
+        <h3>{"Coming Soon"}</h3>
+        <h2>{"Abrasoft Laundry Management App"}</h2>
         <p>Streamline you laundry business</p>
       </Container>
     </div>
