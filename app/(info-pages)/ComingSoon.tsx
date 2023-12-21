@@ -1,7 +1,5 @@
-import Link from "next/link";
 import React from "react";
-import { Button, Container } from "react-bootstrap";
-import { HOME_ROUTE } from "@/app/constants";
+import { Container } from "react-bootstrap";
 import Image from "next/image";
 import CompanyLogo from "@/public/images/company-logo.webp";
 
