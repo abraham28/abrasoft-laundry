@@ -24,7 +24,7 @@ const NotFoundPage = () => {
         }}
       >
         <Image
-          alt="Abrasoft Logo"
+          alt="Abrasoft Laundry Logo"
           src={CompanyLogo}
           width={0}
           height={0}

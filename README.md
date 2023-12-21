@@ -1,6 +1,6 @@
-# Abrasoft Template Website
+# Abrasoft Laundry App
 
-This website is built with Next.js for the purposes of representing Abrasoft. Below are the instructions to set up and run the project.
+This app is built with Next.js for the purposes of Laundry Management. Below are the instructions to set up and run the project.
 
 ## Getting Started
 
@@ -12,9 +12,9 @@ This website is built with Next.js for the purposes of representing Abrasoft. Be
 ### Installation
 
 1. Clone the repository:
-   `git clone https://github.com/abraham28/abrasoft-template.git`
+   `git clone https://github.com/abraham28/abrasoft-laundry.git`
 2. Navigate to the project directory:
-   `cd abrasoft-template`
+   `cd abrasoft-laundry`
 3. Install dependencies:
    `npm install`
 

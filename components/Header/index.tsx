@@ -19,9 +19,10 @@ const Header = () => {
               alt="Company Logo"
               height={50}
               width={50}
+              priority
               className="d-inline-block align-text-top"
             />
-            <p>Abrasoft</p>
+            <p>Abrasoft Laundry</p>
           </Link>
         </NavbarBrand>
         <SmallHeader />

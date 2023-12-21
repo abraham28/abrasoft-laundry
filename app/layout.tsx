@@ -11,8 +11,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Abrasoft | Software Development",
-  description: "Abrasoft is a software development company.",
+  title: "Abrasoft Laundry Management App | Streamlined Laundry",
+  description:
+    "Abrasoft Laundry Management App is designed to streamline laundry management.",
   icons: [
     { url: "/favicon.ico", sizes: "any" },
     { type: "image/x-icon", url: "/favicon.ico" },

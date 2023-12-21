@@ -2,9 +2,10 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Abrasoft | Software Development",
-    short_name: "Abrasoft",
-    description: "Abrasoft is a software development company.",
+    name: "Abrasoft Laundry Management App | Streamlined Laundry",
+    short_name: "Abrasoft Laundry",
+    description:
+      "Abrasoft Laundry Management App is designed to streamline laundry management.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

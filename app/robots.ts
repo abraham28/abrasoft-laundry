@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/private/", "/admin/"], // Add any other disallowed paths
       },
     ],
-    sitemap: "https://abrasoft.com/sitemap.xml",
+    sitemap: "https://laundry.abrasoft.com/sitemap.xml",
   };
 }
