@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "@/components/Header";
+// import Header from "@/components/Header";
 
 export default function InfoPagesLayout({
   children,
@@ -8,7 +8,7 @@ export default function InfoPagesLayout({
 }) {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <main>{children}</main>
     </>
   );
