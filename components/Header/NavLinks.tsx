@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import styles from "./NavLinks.module.scss";
 import * as constants from "@/app/constants";
+import CustomerNavLinks from "./CustomerNavLinks";
+import EmployeeNavLinks from "./EmployeeNavLinks";
+import { usePathname } from "next/navigation";
 
 interface NavLinksProps {
   onClick?: () => void;
@@ -11,23 +11,13 @@ interface NavLinksProps {
 
 const NavLinks: React.FC<NavLinksProps> = ({ onClick }) => {
   const pathname = usePathname();
-
   return (
     <>
-      {constants.NAV_LINKS_ARR.map((link) => {
-        return (
-          <Link
-            href={link.path}
-            key={link.path}
-            className={`${styles.link}${
-              pathname === link.path ? ` ${styles.activeLink}` : ""
-            }`}
-            onClick={onClick}
-          >
-            {link.name}
-          </Link>
-        );
-      })}
+      {pathname === constants.EMPLOYEE_ROUTE ? (
+        <EmployeeNavLinks onClick={onClick} />
+      ) : (
+        <CustomerNavLinks onClick={onClick} />
+      )}
     </>
   );
 };

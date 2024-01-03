@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import Image from "next/image";
 import CompanyLogo from "@/public/images/company-logo.webp";
+import Customer from "./customer/page";
 
 const ComingSoon = () => {
   return (
@@ -38,6 +39,7 @@ const ComingSoon = () => {
         <h3>{"Coming Soon"}</h3>
         <h2>{"Abrasoft Laundry Management App"}</h2>
         <p>Streamline you laundry business</p>
+        <Customer />
       </Container>
     </div>
   );
