@@ -17,7 +17,7 @@
   --warning: #f7b529;
   --danger: #de656b;
   --light: #fff;
-  --dark: #394240;
+  --dark: #000;
   --font-sans-serif: inter, -apple-system, blinkmacsystemfont, "Segoe UI",
     "Helvetica Neue", arial, "Noto Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -49,13 +49,17 @@
 body {
   margin: 0;
   line-height: 1.5;
-  font-weight: 500 !important;
+  font-weight: 400 !important;
   font-size: var(--font-size-base);
   font-family: var(--body-font-family);
   color: var(--bs-dark);
 
   a {
     color: var(--primary);
+  }
+
+  p {
+    margin: 0;
   }
 }
 
