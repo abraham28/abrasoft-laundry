@@ -32,11 +32,11 @@ const RegisterVerifyForm = () => {
         <FormLabel>One Time Pin &#40;OTP&#41;</FormLabel>
         <FormControl
           placeholder="Enter your OTP"
-          {...register("email", { required: true })}
-          isInvalid={!!errors.email}
+          {...register("otp", { required: true })}
+          isInvalid={!!errors.otp}
         />
         <FormControl.Feedback type="invalid">
-          {errors.email?.message}
+          {errors.otp?.message}
         </FormControl.Feedback>
       </FormGroup>
 
