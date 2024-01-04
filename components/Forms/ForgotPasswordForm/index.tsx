@@ -9,19 +9,19 @@ import {
   FormLabel,
 } from "react-bootstrap";
 import styles from "./styles.module.scss";
-import { registerFormSchema, Inputs } from "./validators";
+import { forgotFormSchema, Inputs } from "./validators";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
 
-const RegisterForm = () => {
+const ForgotPasswordForm = () => {
   const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>({
-    resolver: yupResolver(registerFormSchema),
+    resolver: yupResolver(forgotFormSchema),
   });
 
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
@@ -31,7 +31,7 @@ const RegisterForm = () => {
       <FormGroup>
         <FormLabel>Email</FormLabel>
         <FormControl
-          type="email"
+          placeholder="Enter your email"
           {...register("email", { required: true })}
           isInvalid={!!errors.email}
         />
@@ -40,39 +40,15 @@ const RegisterForm = () => {
         </FormControl.Feedback>
       </FormGroup>
 
-      <FormGroup>
-        <FormLabel>Password</FormLabel>
-        <FormControl
-          type="password"
-          {...register("password")}
-          isInvalid={!!errors.password}
-        />
-        <FormControl.Feedback type="invalid">
-          {errors.password?.message}
-        </FormControl.Feedback>
-      </FormGroup>
-
-      <FormGroup>
-        <FormLabel>Confirm Password</FormLabel>
-        <FormControl
-          type="password"
-          {...register("confirmPassword")}
-          isInvalid={!!errors.confirmPassword}
-        />
-        <FormControl.Feedback type="invalid">
-          {errors.confirmPassword?.message}
-        </FormControl.Feedback>
-      </FormGroup>
-
       <Button
+        onClick={() => router.push("/forgot-password/verify-email")}
         type="submit"
-        onClick={() => router.push("register/verify-email")}
         className="w-100"
       >
-        Register
+        Reset Password
       </Button>
     </Form>
   );
 };
 
-export default RegisterForm;
+export default ForgotPasswordForm;
