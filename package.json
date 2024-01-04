@@ -8,14 +8,14 @@
     "start": "next start",
     "lint": "npx eslint \"**/*.{js,ts,tsx}\" --fix && npx stylelint \"**/*.{css,scss}\" --fix && npx prettier \"**/*.{html,json}\" --write",
     "serve": "npm run build && npm run start",
-    "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged && npx next build\""
+    "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.3",
     "@vercel/postgres": "^0.5.1",
     "axios": "^1.6.2",
     "bootstrap": "^5.3.2",
-    "next": "^14.0.3",
+    "next": "^14.0.4",
     "react": "^18",
     "react-bootstrap": "^2.9.1",
     "react-dom": "^18",
@@ -57,7 +57,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npx next build"
+      "pre-commit": "lint-staged"
     }
   }
 }
