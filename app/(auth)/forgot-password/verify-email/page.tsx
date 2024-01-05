@@ -1,6 +1,6 @@
+import ForgotPasswordVerifyForm from "@/components/Forms/ForgotPasswordVerifyForm";
 import Link from "next/link";
 import React from "react";
-import RegisterVerifyForm from "@/components/Forms/RegisterVerifyForm";
 
 const VerifyEmailPage = () => {
   return (
@@ -8,7 +8,7 @@ const VerifyEmailPage = () => {
       <h1 style={{ color: "var(--primary)" }} className="text-center">
         Verify your Email
       </h1>
-      <RegisterVerifyForm />
+      <ForgotPasswordVerifyForm />
       <p>
         Tip&#58; Check your spam folder if you do not see OTP in your email
         inbox
