@@ -2,7 +2,7 @@
 
 :root {
   /* fonts */
-  --font-inter: Inter;
+  --font-inter: inter;
 
   /* Colors */
   --primary: #216ed3;
@@ -26,6 +26,8 @@
   --body-font-family: var(--bs-font-sans-serif);
 
   /* font sizes */
+  --font-size-4xs: 12px;
+  --font-size-2xs: 14px;
   --font-size-base: 16px;
   --font-size-5xl: 24px;
   --font-size-13xl: 32px;
@@ -36,6 +38,7 @@
   --gap-base: 16px;
 
   /* Paddings */
+  --padding-7xs: 4px;
   --padding-5xs: 8px;
   --padding-3xs: 10px;
   --padding-smi: 13px;
@@ -56,16 +59,20 @@ body {
 
   a {
     color: var(--primary);
+    text-decoration: none;
   }
 
   p {
     margin: 0;
   }
+
+  h1 {
+    font-weight: 600;
+  }
 }
 
 .btn {
   border: 0 !important;
-  border-radius: 0 !important;
   padding: var(--padding-5xs) var(--padding-base) !important;
 }
 
@@ -98,5 +105,26 @@ body {
 
   &:active {
     background-color: var(--dark) !important;
+  }
+}
+
+.form-label {
+  font-weight: 500;
+  font-size: var(--font-size-2xs);
+  margin-bottom: var(--padding-7xs);
+}
+
+.invalid-feedback {
+  font-size: var(--font-size-2xs);
+  margin-top: var(--padding-7xs);
+}
+
+.form-check-input {
+  margin-top: 0.2em;
+  border-radius: 0 !important;
+
+  &:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
   }
 }

@@ -52,7 +52,7 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --fix",
-    "*.{css,scss}": "stylelint --fix",
+    "*.{css,scss}": "stylelint --fix --allow-empty-input",
     "*.{html,json}": "prettier --write"
   },
   "husky": {
