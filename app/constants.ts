@@ -13,11 +13,13 @@ export const CUSTOMER_DASHBOARD_ROUTE = "/";
 export const CUSTOMER_PROFILE_ROUTE = "/profile";
 export const CUSTOMER_POINT_HISTORY_ROUTE = "/point-history";
 export const CUSTOMER_ORDERS_ROUTE = "/orders";
+export const POINTS_ROUTE = "/point-history";
 
 export const CUSTOMER_NAV_LINKS_ARR = [
   { path: CUSTOMER_DASHBOARD_ROUTE, name: "Dashboard" },
   { path: CUSTOMER_PROFILE_ROUTE, name: "Profile" },
-  { path: CUSTOMER_ORDERS_ROUTE, name: "Order History" },
+  { path: CUSTOMER_ORDERS_ROUTE, name: "Orders" },
+  { path: POINTS_ROUTE, name: "Points" },
   { path: LOGOUT_ROUTE, name: "Logout " },
 ];
 
