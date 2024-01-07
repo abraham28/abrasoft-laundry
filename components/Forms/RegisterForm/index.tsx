@@ -2,6 +2,7 @@
 
 import React from "react";
 import {
+  Alert,
   Button,
   Form,
   FormControl,
@@ -13,6 +14,7 @@ import { registerFormSchema, Inputs } from "./validators";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
+import { handleFetchApi } from "@/helpers/handleFetchApi";
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -20,11 +22,22 @@ const RegisterForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<Inputs>({
     resolver: yupResolver(registerFormSchema),
   });
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    handleFetchApi("http://localhost:3000/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then(() => router.push("register/verify-email"))
+      .catch((error) => setError("root", { message: error.message }));
+  };
 
   return (
     <Form className={styles.form} noValidate onSubmit={handleSubmit(onSubmit)}>
@@ -64,11 +77,11 @@ const RegisterForm = () => {
         </FormControl.Feedback>
       </FormGroup>
 
-      <Button
-        type="submit"
-        onClick={() => router.push("register/verify-email")}
-        className="w-100"
-      >
+      {errors.root && errors.root.message && (
+        <Alert variant={"danger"}>{errors.root?.message}</Alert>
+      )}
+
+      <Button type="submit" className="w-100">
         Register
       </Button>
     </Form>
