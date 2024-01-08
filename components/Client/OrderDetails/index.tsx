@@ -1,8 +1,7 @@
 import React from "react";
 import { Accordion, AccordionHeader, AccordionItem } from "react-bootstrap";
-import { TbCalendarFilled } from "react-icons/tb";
-import { ImClock } from "react-icons/im";
 import AccordionBody from "react-bootstrap/esm/AccordionBody";
+import OrderDateAndTime from "../OrderDateAndTime";
 
 const OrderDetails = () => {
   return (
@@ -13,14 +12,7 @@ const OrderDetails = () => {
           <p style={{ color: "var(--primary)" }}>Status&#58; Completed</p>
         </AccordionHeader>
         <AccordionBody>
-          <div className="d-flex justify-content-between">
-            <p>
-              <TbCalendarFilled /> Dec. 12, 2023
-            </p>
-            <p>
-              <ImClock /> 11&#58;45 PM
-            </p>
-          </div>
+          <OrderDateAndTime />
           <p>Summary</p>
           <div className="d-flex justify-content-between">
             <p>Full Package</p>

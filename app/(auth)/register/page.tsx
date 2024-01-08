@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import RegisterForm from "@/components/Forms/RegisterForm";
 
-const Page = () => {
+const RegisterPage = () => {
   return (
     <div style={{ display: "grid", gap: 16 }}>
       <Image
@@ -29,4 +29,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default RegisterPage;

@@ -1,5 +1,5 @@
-import LoyaltyAccount from "@/components/Customer/LoyaltyAccount";
-import OrderHistory from "@/components/Customer/OrderHistory";
+import LoyaltyAccount from "@/components/Client/LoyaltyAccount";
+import OrderHistory from "@/components/Client/OrderHistory";
 import React from "react";
 
 const Page = () => {

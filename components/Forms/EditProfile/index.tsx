@@ -14,7 +14,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
 
-const EditClientProfile = () => {
+const EditProfile = () => {
   const router = useRouter();
   const {
     register,
@@ -94,14 +94,20 @@ const EditClientProfile = () => {
         </FormControl.Feedback>
       </FormGroup>
 
-      <Button type="submit" className="w-100">
-        Save
-      </Button>
-      <Button onClick={() => router.back()} variant="danger" className="w-100">
-        Cancel
-      </Button>
+      <div style={{ display: "grid", gap: 8 }}>
+        <Button type="submit" className="w-100">
+          Save
+        </Button>
+        <Button
+          onClick={() => router.back()}
+          variant="danger"
+          className="w-100"
+        >
+          Cancel
+        </Button>
+      </div>
     </Form>
   );
 };
 
-export default EditClientProfile;
+export default EditProfile;

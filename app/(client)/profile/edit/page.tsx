@@ -1,15 +1,15 @@
 import React from "react";
 import ClientProfile from "@/components/Client/ClientProfile";
-import EditClientProfile from "@/components/Forms/EditClientProfile";
+import EditProfile from "@/components/Forms/EditProfile";
 
-const Page = () => {
+const ClientEditPage = () => {
   return (
     <div style={{ display: "grid", gap: 16 }}>
       <h1>Edit Profile</h1>
       <ClientProfile />
-      <EditClientProfile />
+      <EditProfile />
     </div>
   );
 };
 
-export default Page;
+export default ClientEditPage;
