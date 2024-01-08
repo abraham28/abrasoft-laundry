@@ -1,7 +1,7 @@
 import React from "react";
 import NewPasswordForm from "@/components/Forms/NewPasswordForm";
 
-const NewPasswordPage = () => {
+const Page = () => {
   return (
     <div style={{ display: "grid", gap: 16 }}>
       <h1 style={{ color: "var(--primary)" }} className="text-center">
@@ -12,4 +12,4 @@ const NewPasswordPage = () => {
   );
 };
 
-export default NewPasswordPage;
+export default Page;

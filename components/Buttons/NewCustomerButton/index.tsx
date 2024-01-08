@@ -3,13 +3,13 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { Button } from "react-bootstrap";
 
-const EditProfileButton = () => {
+const NewCustomerButton = () => {
   const router = useRouter();
   return (
     <Button onClick={() => router.push("profile/edit")} variant="primary">
-      Edit Profile
+      New Customer
     </Button>
   );
 };
 
-export default EditProfileButton;
+export default NewCustomerButton;

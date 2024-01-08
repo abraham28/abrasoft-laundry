@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import RegisterVerifyForm from "@/components/Forms/RegisterVerifyForm";
 
-const VerifyEmailPage = () => {
+const Page = () => {
   return (
     <div style={{ display: "grid", gap: 16 }}>
       <h1 style={{ color: "var(--primary)" }} className="text-center">
@@ -21,4 +21,4 @@ const VerifyEmailPage = () => {
   );
 };
 
-export default VerifyEmailPage;
+export default Page;

@@ -1,8 +1,6 @@
-"use client";
-
 import { CUSTOMER_DASHBOARD_ROUTE } from "@/app/constants";
-import LoyaltyAccount from "@/components/Customer/LoyaltyAccount";
-import OrderHistory from "@/components/Customer/OrderHistory";
+import LoyaltyAccount from "@/components/Client/LoyaltyAccount";
+import OrderHistory from "@/components/Client/OrderHistory";
 import Link from "next/link";
 import React from "react";
 
