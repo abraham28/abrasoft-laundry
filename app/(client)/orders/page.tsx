@@ -1,7 +1,7 @@
 import React from "react";
 import OrderDetails from "@/components/Client/OrderDetails";
 
-const OrdersPage = () => {
+const Page = () => {
   return (
     <div style={{ display: "grid", gap: 16 }}>
       <h1 style={{ color: "var(--primary)" }}>Order History</h1>
@@ -11,4 +11,4 @@ const OrdersPage = () => {
   );
 };
 
-export default OrdersPage;
+export default Page;

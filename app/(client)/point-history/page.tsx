@@ -1,12 +1,10 @@
-"use client";
-
 import { CUSTOMER_DASHBOARD_ROUTE } from "@/app/constants";
 import LoyaltyAccount from "@/components/Client/LoyaltyAccount";
 import OrderHistory from "@/components/Client/OrderHistory";
 import Link from "next/link";
 import React from "react";
 
-const PointHistoryPage = () => {
+const Page = () => {
   return (
     <div style={{ display: "grid", gap: 16 }}>
       <Link className="d-inline-block" href={CUSTOMER_DASHBOARD_ROUTE}>
@@ -32,4 +30,4 @@ const PointHistoryPage = () => {
   );
 };
 
-export default PointHistoryPage;
+export default Page;

@@ -1,9 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import styles from "./CounterButton.module.scss";
+import "./CounterButton.scss";
 import { Button } from "react-bootstrap";
+import { AiFillMinusCircle } from "react-icons/ai";
+import { BsFillPlusCircleFill } from "react-icons/bs";
 
-const Counter = () => {
+const CounterButton = () => {
   const [count, setCount] = useState<number>(0);
 
   const handleIncrement = () => {
@@ -15,16 +17,16 @@ const Counter = () => {
   };
 
   return (
-    <div className={styles.counterContainer}>
-      <Button className="myButton" onClick={handleDecrement}>
-        -
+    <div className="counterContainer">
+      <Button className="myButton" variant="link" onClick={handleDecrement}>
+        <AiFillMinusCircle />
       </Button>
-      <div className="counter-value">{count}</div>
-      <Button className="myButton" onClick={handleIncrement}>
-        +
+      <div className="counterValue">{count}</div>
+      <Button className="myButton" variant="link" onClick={handleIncrement}>
+        <BsFillPlusCircleFill />
       </Button>
     </div>
   );
 };
 
-export default Counter;
+export default CounterButton;

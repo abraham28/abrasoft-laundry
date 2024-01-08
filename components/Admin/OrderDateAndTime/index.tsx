@@ -6,10 +6,10 @@ const OrderDateAndTime = () => {
   return (
     <div className="d-flex justify-content-between">
       <p>
-        <TbCalendarFilled /> Dec. 12, 2023
+        <TbCalendarFilled /> <b>Dec. 12, 2023</b>
       </p>
       <p>
-        <ImClock /> 11&#58;45 PM
+        <ImClock /> <b>11&#58;45 PM</b>
       </p>
     </div>
   );

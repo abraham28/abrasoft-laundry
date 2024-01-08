@@ -1,5 +1,3 @@
-"use client";
-
 import {
   EMPLOYEE_DASHBOARD_ROUTE,
   EMPLOYEE_ORDERS_ROUTE,
@@ -11,7 +9,7 @@ import NewOrderButton from "@/components/Buttons/NewOrderButton";
 import Link from "next/link";
 import React from "react";
 
-const AdminProfilePage = () => {
+const Page = () => {
   return (
     <div style={{ display: "grid", gap: 16 }}>
       <div className="d-flex justify-content-between">
@@ -37,10 +35,12 @@ const AdminProfilePage = () => {
         <EditProfileButton routerPath="./profile/edit" />
         <NewOrderButton routerPath={EMPLOYEE_ORDERS_ROUTE} />
       </div>
-      <p style={{ fontWeight: "var(--text-bold)" }}>Order History</p>
+      <p>
+        <b>Order History</b>
+      </p>
       <OrderHistory />
     </div>
   );
 };
 
-export default AdminProfilePage;
+export default Page;

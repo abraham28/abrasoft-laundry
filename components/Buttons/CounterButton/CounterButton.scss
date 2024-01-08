@@ -1,6 +1,7 @@
-.counterCcontainer {
+.counterContainer {
   display: flex;
-  margin: 20px;
+  justify-content: end;
+  align-items: center;
 }
 
 .counterValue {
@@ -9,7 +10,7 @@
 }
 
 .myButton {
-  padding: 10px 15px;
-  font-size: 18px;
+  padding: 0;
+  font-size: 40px;
   cursor: pointer;
 }

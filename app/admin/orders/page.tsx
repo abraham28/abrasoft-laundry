@@ -12,7 +12,7 @@ import VoidOrder from "@/components/Buttons/VoidOrderButton";
 import Link from "next/link";
 import React from "react";
 
-const AdminOrdersPage = () => {
+const Page = () => {
   return (
     <div style={{ display: "grid", gap: 16 }}>
       <div className="d-flex justify-content-between">
@@ -34,8 +34,12 @@ const AdminOrdersPage = () => {
         <h1 style={{ color: "var(--primary)" }}>Customer Order</h1>
       </div>
       <div>
-        <p style={{ fontWeight: "var(--text-bold)" }}>Order Details</p>
-        <p style={{ fontWeight: "var(--text-bold)" }}>#01001</p>
+        <p>
+          <b>Order Details</b>
+        </p>
+        <p>
+          <b>#01001</b>
+        </p>
       </div>
 
       <OrderDateAndTime />
@@ -48,4 +52,4 @@ const AdminOrdersPage = () => {
   );
 };
 
-export default AdminOrdersPage;
+export default Page;

@@ -6,19 +6,21 @@ const OrderDeduction = () => {
   return (
     <div style={{ display: "grid", gap: 8 }}>
       <div>
-        <p style={{ fontWeight: "var(--text-bold)" }}>Less&#58;</p>
-        {/* Add condition and if it has no matches, display "No payment has been made" */}
-        <p
-          style={{ fontWeight: "var(--text-bold)" }}
-          className="d-flex justify-content-between"
-        >
-          No payment has been made <span>0</span>
+        <p>
+          <b>Less&#58;</b>
         </p>
-        <p
-          style={{ fontWeight: "var(--text-bold)" }}
-          className="d-flex justify-content-between"
-        >
-          Amount Due <span>222.00</span>
+        {/* Add condition and if it has no matches, display "No payment has been made" */}
+        <p className="d-flex justify-content-between">
+          {" "}
+          <b>
+            No payment has been made <span>0</span>
+          </b>
+        </p>
+        <p className="d-flex justify-content-between">
+          {" "}
+          <b>
+            Amount Due <span>222.00</span>
+          </b>
         </p>
         <AddPaymentButton routerPath={PAYMENTS_ROUTE} />
       </div>

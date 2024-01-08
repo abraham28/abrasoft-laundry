@@ -1,7 +1,7 @@
 import React from "react";
 
-const CompanyRegisterPage = () => {
+const Page = () => {
   return <div>hello world</div>;
 };
 
-export default CompanyRegisterPage;
+export default Page;

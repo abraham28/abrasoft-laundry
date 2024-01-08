@@ -6,14 +6,15 @@ const OrderSummary = () => {
   return (
     <div style={{ display: "grid", gap: 8 }}>
       <div>
-        <p style={{ fontWeight: "var(--text-bold)" }}>Summary</p>
+        <p>
+          <b>Summary</b>
+        </p>
         {/* Add condition and if it has no matches, display "No items" */}
         <div>
-          <p
-            style={{ fontWeight: "var(--text-bold)" }}
-            className="d-flex justify-content-between"
-          >
-            No items <span>0</span>
+          <p className="d-flex justify-content-between">
+            <b>
+              No items <span>0</span>
+            </b>
           </p>
         </div>
       </div>
