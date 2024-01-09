@@ -1,9 +1,9 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./NavLinks.module.scss";
-import * as constants from "@/app/constants";
+import { NavLinksContext } from ".";
 
 interface NavLinksProps {
   onClick?: () => void;
@@ -11,10 +11,11 @@ interface NavLinksProps {
 
 const NavLinks: React.FC<NavLinksProps> = ({ onClick }) => {
   const pathname = usePathname();
+  const navlinks = useContext(NavLinksContext);
 
   return (
     <>
-      {constants.NAV_LINKS_ARR.map((link) => {
+      {navlinks.map((link) => {
         return (
           <Link
             href={link.path}
