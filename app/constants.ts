@@ -25,7 +25,7 @@ export const CUSTOMER_NAV_LINKS_ARR = [
 ];
 
 export const ORDER_SLIP_ROUTE = "./orders/slip";
-export const PAYMENT_AMOUNT_ROUTE = "./orders/payment/payment-amount";
+export const PAYMENT_AMOUNT_ROUTE = "/admin/orders/payment/amount";
 
 // Employee Nav Links Routes
 export const EMPLOYEE_DASHBOARD_ROUTE = "/admin/";
