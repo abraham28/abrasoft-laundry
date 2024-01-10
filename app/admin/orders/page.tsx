@@ -1,11 +1,14 @@
 import {
   EMPLOYEE_DASHBOARD_ROUTE,
+  EMPLOYEE_PRODUCTS_ROUTE,
   ORDER_SLIP_ROUTE,
   PAYMENTS_ROUTE,
 } from "@/app/constants";
 import OrderDateAndTime from "@/components/Admin/OrderDateAndTime";
 import OrderDeduction from "@/components/Admin/OrderDeduction";
 import OrderSummary from "@/components/Admin/OrderSummary";
+import AddPaymentButton from "@/components/Buttons/AddPaymentButton";
+import AddProductsButton from "@/components/Buttons/AddProductsButton";
 import OrderSlipButton from "@/components/Buttons/OrderSlipButton";
 import SaveButton from "@/components/Buttons/SaveButton";
 import VoidOrder from "@/components/Buttons/VoidOrderButton";
@@ -44,7 +47,9 @@ const Page = () => {
 
       <OrderDateAndTime />
       <OrderSummary />
+      <AddProductsButton routerPath={EMPLOYEE_PRODUCTS_ROUTE} />
       <OrderDeduction />
+      <AddPaymentButton routerPath={PAYMENTS_ROUTE} />
       <OrderSlipButton routerPath={ORDER_SLIP_ROUTE} />
       <SaveButton />
       <VoidOrder routerPath={PAYMENTS_ROUTE} />

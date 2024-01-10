@@ -2,7 +2,7 @@ import {
   EMPLOYEE_DASHBOARD_ROUTE,
   EMPLOYEE_ORDERS_ROUTE,
 } from "@/app/constants";
-import AdminProfile from "@/components/Admin/AdminProfile";
+import BasicAdminProfile from "@/components/Admin/BasicAdminProfile";
 import OrderHistory from "@/components/Admin/OderHistory";
 import EditProfileButton from "@/components/Buttons/EditProfileButton";
 import NewOrderButton from "@/components/Buttons/NewOrderButton";
@@ -30,7 +30,7 @@ const Page = () => {
         </Link>
         <h1 style={{ color: "var(--primary)" }}>Customer Profile</h1>
       </div>
-      <AdminProfile />
+      <BasicAdminProfile />
       <div className="d-flex justify-content-between">
         <EditProfileButton routerPath="./profile/edit" />
         <NewOrderButton routerPath={EMPLOYEE_ORDERS_ROUTE} />

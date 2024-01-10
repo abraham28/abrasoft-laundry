@@ -1,5 +1,3 @@
-import { EMPLOYEE_PRODUCTS_ROUTE } from "@/app/constants";
-import AddProductsButton from "@/components/Buttons/AddProductsButton";
 import React from "react";
 
 const OrderSummary = () => {
@@ -18,8 +16,6 @@ const OrderSummary = () => {
           </p>
         </div>
       </div>
-
-      <AddProductsButton routerPath={EMPLOYEE_PRODUCTS_ROUTE} />
     </div>
   );
 };

@@ -14,11 +14,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
 
-<<<<<<<< HEAD:components/Forms/EditProfile/index.tsx
-const EditProfile = () => {
-========
 const EditProfileForm = () => {
->>>>>>>> 68d629d ((admin) Employee UI, added styles, uses map function for efficient code):components/Forms/EditProfileForm/index.tsx
   const router = useRouter();
   const {
     register,
@@ -114,8 +110,4 @@ const EditProfileForm = () => {
   );
 };
 
-<<<<<<<< HEAD:components/Forms/EditProfile/index.tsx
-export default EditProfile;
-========
 export default EditProfileForm;
->>>>>>>> 68d629d ((admin) Employee UI, added styles, uses map function for efficient code):components/Forms/EditProfileForm/index.tsx

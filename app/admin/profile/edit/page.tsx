@@ -1,11 +1,11 @@
 import React from "react";
-import EditProfile from "@/components/Forms/EditProfile";
+import EditProfileForm from "@/components/Forms/EditProfileForm";
 
 const AdminEditPage = () => {
   return (
     <div style={{ display: "grid", gap: 16 }}>
       <h1 color="var(--primary)">Customer Profile</h1>
-      <EditProfile />
+      <EditProfileForm />
     </div>
   );
 };

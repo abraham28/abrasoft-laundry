@@ -24,17 +24,19 @@ export const CUSTOMER_NAV_LINKS_ARR = [
   { path: LOGOUT_ROUTE, name: "Logout " },
 ];
 
+export const ORDER_SLIP_ROUTE = "./orders/slip";
+export const PAYMENT_AMOUNT_ROUTE = "./orders/payment/payment-amount";
+
 // Employee Nav Links Routes
 export const EMPLOYEE_DASHBOARD_ROUTE = "/admin/";
 export const COMPANY_MANAGEMENT_ROUTE = "/admin/company-management";
 export const EMPLOYEES_ROUTE = "/admin/employee";
 export const EMPLOYEE_ORDERS_ROUTE = "/admin/orders";
 export const PURCHASES_ROUTE = "/admin/purchases";
-export const EMPLOYEE_PRODUCTS_ROUTE = "./orders/products";
-export const PAYMENTS_ROUTE = "./orders/payment";
+export const EMPLOYEE_PRODUCTS_ROUTE = "/admin/orders/products";
+export const PAYMENTS_ROUTE = "/admin/orders/payment";
 export const EXPENSES_ROUTE = "/admin/expenses";
 export const REPORTS_ROUTE = "/admin/reports";
-export const ORDER_SLIP_ROUTE = "./orders/payment-method/order-slip";
 
 export const EMPLOYEE_NAV_LINKS_ARR = [
   { path: EMPLOYEE_DASHBOARD_ROUTE, name: "Dashboard" },

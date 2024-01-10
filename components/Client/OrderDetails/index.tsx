@@ -8,7 +8,9 @@ const OrderDetails = () => {
     <Accordion defaultActiveKey="0" flush>
       <AccordionItem eventKey="0">
         <AccordionHeader>
-          <p>#OR0152</p>
+          <div className="accordion-button">
+            <p>#OR0152</p>
+          </div>
           <p style={{ color: "var(--primary)" }}>Status&#58; Completed</p>
         </AccordionHeader>
         <AccordionBody>
