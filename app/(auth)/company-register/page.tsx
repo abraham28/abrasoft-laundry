@@ -1,7 +1,24 @@
 import React from "react";
+import CompanyRegisterForm from "@/components/Forms/CompanyRegisterForm";
+import RegisterButton from "@/components/Buttons/RegisterButton";
+import Link from "next/link";
 
 const Page = () => {
-  return <div>hello world</div>;
+  return (
+    <div style={{ display: "grid", gap: 16 }}>
+      <h1 style={{ color: "var(--primary)" }} className="text-center">
+        Company Registration
+      </h1>
+      <CompanyRegisterForm />
+      <RegisterButton />
+      <div>
+        <p>
+          Already have an account&#63; Go to
+          <Link href={"/login"}> Register</Link>
+        </p>
+      </div>
+    </div>
+  );
 };
 
 export default Page;
