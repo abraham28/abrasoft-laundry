@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { setCookie } from "cookies-next";
-import { generateJWT, hashPassword } from "../../helpers";
-import { createPool, endPool } from "../../db";
+import { generateJWT, generateUUID, hashPassword } from "../../helpers";
 import { emailSchema, passwordSchema } from "@/helpers/validators";
+import { kv } from "@vercel/kv";
+import { DB, UUID, User } from "../../models";
 
 export async function POST(req: NextRequest) {
   try {
@@ -52,13 +53,9 @@ export async function POST(req: NextRequest) {
     }
 
     // Check if the email is already registered
-    const pool = createPool();
-    const existingUserResult = await pool.query(
-      "SELECT * FROM users WHERE user_email = $1",
-      [email],
-    );
+    const userIdResult = await kv.get<DB["user_email:[email]"]>(email);
 
-    if (existingUserResult.rows.length > 0) {
+    if (userIdResult !== null) {
       return NextResponse.json(
         { error: "Email is already registered" },
         { status: 400 },
@@ -90,19 +87,19 @@ export async function POST(req: NextRequest) {
     const hashedPassword = await hashPassword(password);
 
     // Insert the new user into the database
-    const result = await pool.query(
-      "INSERT INTO users (user_email, user_password) VALUES ($1, $2) RETURNING *",
-      [email, hashedPassword],
-    );
-
-    // Get the newly inserted user
-    const newUser = result.rows[0];
+    const user_id = generateUUID();
+    const user_data: User = {
+      user_id: user_id,
+      user_email: email,
+      user_password: hashedPassword,
+    };
+    kv.set(`user_email:${email}`, user_id as UUID);
+    kv.hset(`user:${user_id}`, { ...user_data });
 
     // Set a JWT token if "remember" option is selected
     if (remember) {
       const userData = {
-        email: newUser.user_email,
-        // Add more user data as needed
+        email: user_data.user_email,
       };
 
       const token = generateJWT(userData);
@@ -129,7 +126,5 @@ export async function POST(req: NextRequest) {
       { error: "Internal Server Error" },
       { status: 500 },
     );
-  } finally {
-    await endPool();
   }
 }

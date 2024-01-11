@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { setCookie } from "cookies-next";
 import { generateJWT } from "../../helpers";
-import { createPool, endPool } from "../../db";
 import bcrypt from "bcrypt";
+import { kv } from "@vercel/kv";
+import { UUID, User } from "../../models";
 
 export async function POST(req: NextRequest) {
   try {
@@ -23,14 +24,19 @@ export async function POST(req: NextRequest) {
     const { email, password, remember } = await req.json();
 
     // Query the database to check user credentials
-    const pool = createPool(); // Create a new pool instance
-    const result = await pool.query(
-      "SELECT user_password FROM users WHERE user_email = $1",
-      [email],
-    );
+    const userId: UUID | null = await kv.get(`user_email:${email}`);
 
-    if (result.rows.length > 0) {
-      const storedHashedPassword = result.rows[0].user_password;
+    if (userId === null) {
+      return NextResponse.json(
+        { error: "Invalid credentials" },
+        { status: 401 },
+      );
+    }
+
+    const user_data = await kv.hgetall<User>(`user:${userId}`);
+
+    if (user_data) {
+      const storedHashedPassword = user_data.user_password;
 
       // Compare the hashed passwords
       const passwordMatch = await bcrypt.compare(
@@ -44,7 +50,7 @@ export async function POST(req: NextRequest) {
         // Set a JWT token if "remember" option is selected
         if (remember) {
           const userData = {
-            email: result.rows[0].user_email,
+            email: user_data.user_email,
             // Add more user data as needed
           };
 
@@ -77,8 +83,5 @@ export async function POST(req: NextRequest) {
       { error: "Internal Server Error" },
       { status: 500 },
     );
-  } finally {
-    // It's important to release the client back to the pool after using it
-    await endPool();
   }
 }
