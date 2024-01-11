@@ -49,3 +49,7 @@ export const EMPLOYEE_NAV_LINKS_ARR = [
   { path: REPORTS_ROUTE, name: "Reports" },
   { path: LOGOUT_ROUTE, name: "Logout" },
 ];
+
+export const COMPANY_DETAILS_ROUTE = "/admin/company-details/";
+export const COMPANY_EDIT_HEADER_ROUTE = "/admin/company-details/edit-header";
+export const COMPANY_EDIT_DETAILS_ROUTE = "/admin/company-details/edit-details";
