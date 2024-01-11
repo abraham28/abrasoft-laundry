@@ -1,0 +1,27 @@
+.amountList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.listItem {
+  list-style: none;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.linkListItem {
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  border: 0.1px solid rgb(0 0 0 / 17.5%);
+  color: var(--dark);
+  padding: var(--padding-base);
+}
+
+.cash {
+  font-size: var(--font-size-base);
+}
+
+.amountAlignment {
+  text-align: end;
+}

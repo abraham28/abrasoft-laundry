@@ -1,8 +1,8 @@
 import NewPasswordCreated from "@/components/Register/NewPasswordCreated";
 import React from "react";
 
-const SuccessPromptPage = () => {
+const Page = () => {
   return <NewPasswordCreated />;
 };
 
-export default SuccessPromptPage;
+export default Page;

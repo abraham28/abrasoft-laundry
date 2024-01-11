@@ -14,6 +14,7 @@ export const CUSTOMER_PROFILE_ROUTE = "/profile";
 export const CUSTOMER_POINT_HISTORY_ROUTE = "/point-history";
 export const CUSTOMER_ORDERS_ROUTE = "/orders";
 export const POINTS_ROUTE = "/point-history";
+export const CLIENT_EDIT_PROFILE_ROUTE = "/profile/edit";
 
 export const CUSTOMER_NAV_LINKS_ARR = [
   { path: CUSTOMER_DASHBOARD_ROUTE, name: "Dashboard" },
@@ -23,13 +24,17 @@ export const CUSTOMER_NAV_LINKS_ARR = [
   { path: LOGOUT_ROUTE, name: "Logout " },
 ];
 
+export const ORDER_SLIP_ROUTE = "./orders/slip";
+export const PAYMENT_AMOUNT_ROUTE = "/admin/orders/payment/amount";
+
 // Employee Nav Links Routes
-export const EMPLOYEE_DASHBOARD_ROUTE = "/admin/dashboard";
+export const EMPLOYEE_DASHBOARD_ROUTE = "/admin/";
 export const COMPANY_MANAGEMENT_ROUTE = "/admin/company-management";
 export const EMPLOYEES_ROUTE = "/admin/employee";
-export const PRODUCTS_ROUTE = "/admin/products";
+export const EMPLOYEE_ORDERS_ROUTE = "/admin/orders";
 export const PURCHASES_ROUTE = "/admin/purchases";
-export const PAYMENTS_ROUTE = "/admin/payments";
+export const EMPLOYEE_PRODUCTS_ROUTE = "/admin/orders/products";
+export const PAYMENTS_ROUTE = "/admin/orders/payment";
 export const EXPENSES_ROUTE = "/admin/expenses";
 export const REPORTS_ROUTE = "/admin/reports";
 
@@ -37,10 +42,10 @@ export const EMPLOYEE_NAV_LINKS_ARR = [
   { path: EMPLOYEE_DASHBOARD_ROUTE, name: "Dashboard" },
   { path: COMPANY_MANAGEMENT_ROUTE, name: "Company Management" },
   { path: EMPLOYEES_ROUTE, name: "Employee" },
-  // { path: PRODUCTS_ROUTE, name: "Products" },
-  // { path: PURCHASES_ROUTE, name: "Purchases" },
-  // { path: PAYMENTS_ROUTE, name: "Payments" },
-  // { path: EXPENSES_ROUTE, name: "Expenses" },
-  // { path: REPORTS_ROUTE, name: "Reports" },
+  { path: EMPLOYEE_PRODUCTS_ROUTE, name: "Products" },
+  { path: PURCHASES_ROUTE, name: "Purchases" },
+  { path: PAYMENTS_ROUTE, name: "Payments" },
+  { path: EXPENSES_ROUTE, name: "Expenses" },
+  { path: REPORTS_ROUTE, name: "Reports" },
   { path: LOGOUT_ROUTE, name: "Logout" },
 ];

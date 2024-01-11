@@ -1,8 +1,8 @@
 import React from "react";
 import SuccessPrompt from "@/components/Register/SuccessPrompt";
 
-const SuccessPromptPage = () => {
+const Page = () => {
   return <SuccessPrompt />;
 };
 
-export default SuccessPromptPage;
+export default Page;

@@ -1,0 +1,16 @@
+.counterContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counterValue {
+  font-size: 24px;
+  margin: 0 15px;
+}
+
+.myButton {
+  padding: 0;
+  font-size: 40px;
+  cursor: pointer;
+}
