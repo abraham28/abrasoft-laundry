@@ -2,12 +2,12 @@ import React from "react";
 import { Button } from "react-bootstrap";
 
 interface RegisterButtonProps {
-  buttonType?: "button" | "submit" | "reset";
+  form: string;
 }
 
-const RegisterButton: React.FC<RegisterButtonProps> = ({ buttonType }) => {
+const RegisterButton: React.FC<RegisterButtonProps> = ({ form: form }) => {
   return (
-    <Button type={buttonType} variant="primary">
+    <Button form={form} type="submit" variant="primary">
       Register
     </Button>
   );

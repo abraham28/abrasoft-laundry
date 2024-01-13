@@ -11,10 +11,10 @@ const Page = () => {
         <p>
           <b>Company Details</b>
         </p>
-        <SaveButton />
+        <SaveButton form="editCompanyDetailsForm" />
       </div>
 
-      <EditCompanyDetailsForm />
+      <EditCompanyDetailsForm id="editCompanyDetailsForm" />
     </div>
   );
 };

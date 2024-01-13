@@ -7,7 +7,11 @@ import { companyRegisterFormSchema, Inputs } from "./validators";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-const CompanyRegisterForm = () => {
+interface CompanyRegisterFormProps {
+  id: string;
+}
+
+const CompanyRegisterForm: React.FC<CompanyRegisterFormProps> = ({ id }) => {
   const {
     register,
     handleSubmit,
@@ -19,7 +23,12 @@ const CompanyRegisterForm = () => {
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
   return (
-    <Form className={styles.form} noValidate onSubmit={handleSubmit(onSubmit)}>
+    <Form
+      id={id}
+      className={styles.form}
+      noValidate
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <FormGroup>
         <FormLabel>Company Name</FormLabel>
         <FormControl

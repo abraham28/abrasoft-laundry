@@ -7,7 +7,13 @@ import { editCompanyDetailsFormSchema, Inputs } from "./validators";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-const EditCompanyDetailsForm = () => {
+interface EditCompanyDetailsFormProps {
+  id: string;
+}
+
+const EditCompanyDetailsForm: React.FC<EditCompanyDetailsFormProps> = ({
+  id,
+}) => {
   const {
     register,
     handleSubmit,
@@ -19,7 +25,12 @@ const EditCompanyDetailsForm = () => {
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
   return (
-    <Form className={styles.form} noValidate onSubmit={handleSubmit(onSubmit)}>
+    <Form
+      id={id}
+      className={styles.form}
+      noValidate
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <FormGroup>
         <FormLabel>Company Name</FormLabel>
         <FormControl

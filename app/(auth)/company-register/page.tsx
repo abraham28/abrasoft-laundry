@@ -9,8 +9,8 @@ const Page = () => {
       <h1 style={{ color: "var(--primary)" }} className="text-center">
         Company Registration
       </h1>
-      <CompanyRegisterForm />
-      <RegisterButton />
+      <CompanyRegisterForm id="companyRegisterForm" />
+      <RegisterButton form="companyRegisterForm" />
       <div>
         <p>
           Already have an account&#63; Go to

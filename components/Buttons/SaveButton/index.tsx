@@ -2,12 +2,12 @@ import React from "react";
 import { Button } from "react-bootstrap";
 
 interface SaveButtonProps {
-  buttonType?: "button" | "submit" | "reset";
+  form?: string;
 }
 
-const SaveButton: React.FC<SaveButtonProps> = ({ buttonType }) => {
+const SaveButton: React.FC<SaveButtonProps> = ({ form: id }) => {
   return (
-    <Button type={buttonType} variant="primary">
+    <Button form={id} type="submit" variant="primary">
       Save
     </Button>
   );

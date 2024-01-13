@@ -1,21 +1,17 @@
 "use client";
 
 import React from "react";
-import {
-  Button,
-  Form,
-  FormControl,
-  FormGroup,
-  FormLabel,
-} from "react-bootstrap";
+import { Form, FormControl, FormGroup, FormLabel } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { editClientProfileSchema, Inputs } from "./validators";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useRouter } from "next/navigation";
 
-const EditProfileForm = () => {
-  const router = useRouter();
+interface EditProfileFormProps {
+  id: string;
+}
+
+const EditProfileForm: React.FC<EditProfileFormProps> = ({ id }) => {
   const {
     register,
     handleSubmit,
@@ -27,7 +23,12 @@ const EditProfileForm = () => {
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
   return (
-    <Form className={styles.form} noValidate onSubmit={handleSubmit(onSubmit)}>
+    <Form
+      id={id}
+      className={styles.form}
+      noValidate
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <FormGroup>
         <FormLabel>First Name</FormLabel>
         <FormControl
@@ -38,7 +39,6 @@ const EditProfileForm = () => {
           {errors.firstName?.message}
         </FormControl.Feedback>
       </FormGroup>
-
       <FormGroup>
         <FormLabel>Last Name</FormLabel>
         <FormControl
@@ -49,7 +49,6 @@ const EditProfileForm = () => {
           {errors.lastName?.message}
         </FormControl.Feedback>
       </FormGroup>
-
       <FormGroup>
         <FormLabel>Email</FormLabel>
         <FormControl
@@ -60,7 +59,6 @@ const EditProfileForm = () => {
           {errors.email?.message}
         </FormControl.Feedback>
       </FormGroup>
-
       <FormGroup>
         <FormLabel>Birthday</FormLabel>
         <FormControl
@@ -71,7 +69,6 @@ const EditProfileForm = () => {
           {errors.birthday?.message}
         </FormControl.Feedback>
       </FormGroup>
-
       <FormGroup>
         <FormLabel>Contact Number</FormLabel>
         <FormControl
@@ -82,7 +79,6 @@ const EditProfileForm = () => {
           {errors.contactNumber?.message}
         </FormControl.Feedback>
       </FormGroup>
-
       <FormGroup>
         <FormLabel>Address</FormLabel>
         <FormControl
@@ -93,19 +89,6 @@ const EditProfileForm = () => {
           {errors.address?.message}
         </FormControl.Feedback>
       </FormGroup>
-
-      <div style={{ display: "grid", gap: 8 }}>
-        <Button type="submit" className="w-100">
-          Save
-        </Button>
-        <Button
-          onClick={() => router.back()}
-          variant="danger"
-          className="w-100"
-        >
-          Cancel
-        </Button>
-      </div>
     </Form>
   );
 };
