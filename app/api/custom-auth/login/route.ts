@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
-import redisDb from "../../redis-client";
+import redisDb from "../../../../redis/redis-client";
 
 export async function POST(req: NextRequest) {
   try {

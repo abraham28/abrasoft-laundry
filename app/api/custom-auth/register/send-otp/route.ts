@@ -1,4 +1,4 @@
-import redisDb from "@/app/api/redis-client";
+import redisDb from "@/redis/redis-client";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {

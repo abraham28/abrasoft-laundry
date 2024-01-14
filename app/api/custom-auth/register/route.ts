@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { generateUUID, hashPassword } from "../../helpers";
+import { generateUUID, hashPassword } from "../../../../redis/utils/generic";
 import { emailSchema, passwordSchema } from "@/helpers/validators";
-import redisDb from "../../redis-client";
+import redisDb from "../../../../redis/redis-client";
 
 export async function POST(req: NextRequest) {
   try {
@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (await redisDb.isEmailVerified(email)) {
+    if (await redisDb.isUserEmailVerified(email)) {
       return NextResponse.json(
         { error: "Email is already registered" },
         { status: 400 },

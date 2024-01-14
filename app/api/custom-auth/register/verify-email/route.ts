@@ -1,4 +1,4 @@
-import redisDb from "@/app/api/redis-client";
+import redisDb from "@/redis/redis-client";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -22,6 +22,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const isAlreadyVerified = await redisDb.isUserEmailVerified(email);
+    if (isAlreadyVerified)
+      return NextResponse.json(
+        { error: "Email is already verified." },
+        { status: 400 },
+      );
+
     const isVerifiedOTP = await redisDb.verifyOTP({
       otp: Number(otp),
       email: email,
@@ -31,6 +38,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         { error: "Invalid One Time Pin (OTP)" },
         { status: 400 },
+      );
+
+    const setVerifySuccess = await redisDb.setUserVerified(email);
+
+    if (!setVerifySuccess)
+      throw new Error(
+        "Unable to update verification status due to server error",
       );
 
     return NextResponse.json(

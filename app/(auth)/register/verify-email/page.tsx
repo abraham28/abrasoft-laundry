@@ -2,7 +2,7 @@ import React from "react";
 import RegisterVerifyForm from "@/components/Forms/RegisterVerifyForm";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import { CUSTOMER_DASHBOARD_ROUTE } from "@/app/constants";
 
 const Page = async () => {
