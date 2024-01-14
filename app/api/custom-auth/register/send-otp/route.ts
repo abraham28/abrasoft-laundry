@@ -1,8 +1,7 @@
-import redisClient from "@/app/api/redis-client";
+import redisDb from "@/app/api/redis-client";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-  const client = await redisClient();
   try {
     if (req.method !== "POST") {
       return NextResponse.json(
@@ -20,21 +19,14 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const OTP = await client.get(`otp:${email}`);
+    const sendSuccess = await redisDb.sendOTP(email);
 
-    if (!OTP) {
+    if (!sendSuccess) {
       return NextResponse.json(
         { error: "OTP is not generated" },
         { status: 400 },
       );
     }
-
-    // TODO: Add a function to avoid getting spammed for resend
-
-    // TODO: Send an email to user
-    console.log(
-      `Please verify your email by entering this OTP ${OTP.toString()} in the verification page`,
-    );
 
     return NextResponse.json(
       { success: true, message: "OTP successfully resent" },
@@ -45,7 +37,5 @@ export async function POST(req: NextRequest) {
       { error: "Internal Server Error" },
       { status: 500 },
     );
-  } finally {
-    client.disconnect();
   }
 }

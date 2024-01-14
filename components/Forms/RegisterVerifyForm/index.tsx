@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   Alert,
   Button,
@@ -80,7 +80,7 @@ const RegisterVerifyForm: React.FC = () => {
       .catch((error) => setError("root", { message: error.message }));
   };
 
-  const handleResendClick = async () => {
+  const resendOTP = useCallback(async () => {
     if (!decryptedEmail) {
       return; // Handle error or redirect, if necessary
     }
@@ -95,7 +95,11 @@ const RegisterVerifyForm: React.FC = () => {
       .then(() => clearErrors())
       .catch((error) => setError("root", { message: error.message }))
       .finally(() => setResendSeconds(initialResendSeconds));
-  };
+  }, [clearErrors, decryptedEmail, setError]);
+
+  useEffect(() => {
+    resendOTP();
+  }, [resendOTP]);
 
   return (
     <Form className={styles.form} noValidate onSubmit={handleSubmit(onSubmit)}>
@@ -126,7 +130,7 @@ const RegisterVerifyForm: React.FC = () => {
       <p>
         Did not receive your OTP?&nbsp;
         <ResendButton
-          onClick={handleResendClick}
+          onClick={resendOTP}
           disabled={resendSeconds > 0}
           countdown={resendSeconds}
         />

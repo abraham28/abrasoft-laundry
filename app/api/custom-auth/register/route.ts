@@ -1,11 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { generateOTP, generateUUID, hashPassword } from "../../helpers";
+import { generateUUID, hashPassword } from "../../helpers";
 import { emailSchema, passwordSchema } from "@/helpers/validators";
-import redisClient from "../../redis-client";
-import { WatchError } from "redis";
+import redisDb from "../../redis-client";
 
 export async function POST(req: NextRequest) {
-  const client = await redisClient();
   try {
     // Check if NEXTAUTH_SECRET is set before proceeding
     if (!process.env.NEXTAUTH_SECRET) {
@@ -52,14 +50,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Check if the email is already registered
-    const userIdResult = await client.get(`user_email:${email}`);
-    const isEmailVerified = await client.hGet(
-      `user:${userIdResult}`,
-      "user_email_verified",
-    );
-
-    if (isEmailVerified && Number(isEmailVerified) === 1) {
+    if (await redisDb.isEmailVerified(email)) {
       return NextResponse.json(
         { error: "Email is already registered" },
         { status: 400 },
@@ -89,41 +80,18 @@ export async function POST(req: NextRequest) {
 
     // Hash the password before storing it in the database
     const hashedPassword = await hashPassword(password);
-    const OTP = generateOTP();
+    const existingUserId = await redisDb.getUserIdByEmail(email);
 
     // Insert the new user into the database
-    const user_id = userIdResult || generateUUID();
+    const user_id = existingUserId || generateUUID();
     const user_data = {
       user_id: user_id,
       user_email: email,
       user_password: hashedPassword,
     };
 
-    const createKvUserResults = await client.executeIsolated(
-      async (isolatedClient) => {
-        await isolatedClient.watch(`user_email:${email}`);
-
-        // TODO: Send an email to user
-        console.log(
-          `Please verify your email by entering this OTP ${OTP.toString()} in the verification page`,
-        );
-
-        const result = await isolatedClient
-          .multi()
-          .set(`user_email:${email}`, user_id)
-          .set(`otp:${email}`, OTP)
-          .hSet(`user:${user_id}`, user_data)
-          .exec();
-        isolatedClient.disconnect();
-        return result;
-      },
-    );
-
-    if (createKvUserResults.every((result) => !result))
-      return NextResponse.json(
-        { error: "User creation error occured" },
-        { status: 500 },
-      );
+    const createdUser = await redisDb.createUser(user_data);
+    if (!createdUser) throw new Error("Failed to create User");
 
     return NextResponse.json(
       {
@@ -136,17 +104,12 @@ export async function POST(req: NextRequest) {
       },
     );
   } catch (error) {
-    if (error instanceof WatchError)
-      return NextResponse.json(
-        { error: "User creation transaction aborted" },
-        { status: 500 },
-      );
+    if (error instanceof Error)
+      return NextResponse.json({ error: error.message }, { status: 500 });
 
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 },
     );
-  } finally {
-    client.disconnect();
   }
 }

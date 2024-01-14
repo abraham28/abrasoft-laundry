@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
-import redisClient from "../../redis-client";
+import redisDb from "../../redis-client";
 
 export async function POST(req: NextRequest) {
-  const client = await redisClient();
-
   try {
     if (!process.env.NEXTAUTH_SECRET) {
       throw new Error(
@@ -20,14 +18,7 @@ export async function POST(req: NextRequest) {
 
     const { email, password } = await req.json();
 
-    const userId = await client.get(`user_email:${email}`);
-    if (!userId)
-      return NextResponse.json(
-        { error: "Invalid credentials" },
-        { status: 401 },
-      );
-
-    const user_data = await client.hGetAll(`user:${userId}`);
+    const user_data = await redisDb.getUserByEmail(email);
 
     if (!user_data)
       return NextResponse.json(
@@ -64,7 +55,5 @@ export async function POST(req: NextRequest) {
       { error: "Internal Server Error" },
       { status: 500 },
     );
-  } finally {
-    await client.disconnect();
   }
 }

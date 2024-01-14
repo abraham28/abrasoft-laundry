@@ -66,4 +66,4 @@ const BASE_URL = "http://localhost:3000";
 export const API_LOGIN_URL = `${BASE_URL}/api/custom-auth/login`;
 export const API_REGISTER_URL = `${BASE_URL}/api/custom-auth/register`;
 export const API_VERIFY_EMAIL_URL = `${BASE_URL}/api/custom-auth/register/verify-email`;
-export const API_VERIFY_EMAIL_RESEND_URL = `${BASE_URL}/api/custom-auth/register/resend-otp`;
+export const API_VERIFY_EMAIL_RESEND_URL = `${BASE_URL}/api/custom-auth/register/send-otp`;
