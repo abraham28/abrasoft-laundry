@@ -5,7 +5,6 @@ import {
   Alert,
   Button,
   Form,
-  FormCheck,
   FormControl,
   FormGroup,
   FormLabel,
@@ -35,8 +34,15 @@ const LoginForm = () => {
       redirect: false,
     })
       .then((response) => {
-        if (response?.error) {
-          setError("root", { message: response.error });
+        if (response && response.error) {
+          try {
+            const errorJson = JSON.parse(response.error);
+            if (errorJson.emailVerificationLink) {
+              router.replace(errorJson.emailVerificationLink);
+            }
+          } catch (error) {
+            setError("root", { message: response.error });
+          }
           return;
         }
         router.push(CUSTOMER_DASHBOARD_ROUTE);
@@ -70,18 +76,6 @@ const LoginForm = () => {
         <FormControl.Feedback type="invalid">
           {errors.password?.message}
         </FormControl.Feedback>
-      </FormGroup>
-
-      <FormGroup className="d-flex gap-1">
-        <FormCheck
-          id="remember"
-          type="checkbox"
-          {...register("remember")}
-          isInvalid={!!errors.remember}
-        />
-        <FormLabel style={{ margin: 0 }} htmlFor="remember">
-          Remember this device
-        </FormLabel>
       </FormGroup>
 
       {errors.root && errors.root.message && (

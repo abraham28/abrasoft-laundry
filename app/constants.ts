@@ -2,7 +2,7 @@ export const HOME_ROUTE = "/";
 export const NAV_LINKS_ARR = [{ path: HOME_ROUTE, name: "Home" }];
 
 export const OFFICIAL_DOMAIN = "laundry.abrasoft.com";
-export const OFFICIAL_DOMAIN_URL = `https://${OFFICIAL_DOMAIN}/`;
+export const asd = `https://${OFFICIAL_DOMAIN}/`;
 
 export const COPYRIGHT = "© 2023 Abrasoft Corporation";
 
@@ -62,7 +62,8 @@ export const COMPANY_DETAILS_ROUTE = "/admin/company-details/";
 export const COMPANY_EDIT_HEADER_ROUTE = "/admin/company-details/edit-header";
 export const COMPANY_EDIT_DETAILS_ROUTE = "/admin/company-details/edit-details";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+export const BASE_URL =
+  process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 export const API_LOGIN_URL = `${BASE_URL}/api/custom-auth/login`;
 export const API_REGISTER_URL = `${BASE_URL}/api/custom-auth/register`;
 export const API_VERIFY_EMAIL_URL = `${BASE_URL}/api/custom-auth/register/verify-email`;

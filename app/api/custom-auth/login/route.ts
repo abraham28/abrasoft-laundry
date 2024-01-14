@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import redisDb from "../../../../redis/redis-client";
+import { BASE_URL, REGISTER_VERIFY_EMAIL_ROUTE } from "@/app/constants";
 import { User } from "next-auth";
 
 export async function POST(req: NextRequest) {
@@ -21,7 +22,7 @@ export async function POST(req: NextRequest) {
         { status: 401 },
       );
 
-    const storedHashedPassword = user_data.user_password as string;
+    const storedHashedPassword = user_data.user_password;
 
     const isPasswordMatched = await bcrypt.compare(
       password,
@@ -34,13 +35,23 @@ export async function POST(req: NextRequest) {
         { status: 401 },
       );
 
-    const userData: User = {
-      id: user_data.user_id,
-      email: user_data.user_email,
-    };
+    if (!user_data.user_email_verified) {
+      const encryptedEmail = btoa(user_data.user_email);
+      return NextResponse.json(
+        {
+          error: "Please verify email first.",
+          emailVerificationLink: `${BASE_URL}/${REGISTER_VERIFY_EMAIL_ROUTE}?email=${encryptedEmail}`,
+        },
+        { status: 401 },
+      );
+    }
 
     return NextResponse.json(
-      { success: true, message: "Login successful", data: userData },
+      {
+        success: true,
+        message: "Login successful",
+        data: { email: user_data.user_email, id: user_data.user_id } as User,
+      },
       {
         status: 200,
       },

@@ -10,7 +10,7 @@ export const redisClient = async () => {
       tls: process.env.NODE_ENV === "production",
     },
   })
-    .on("error", (err) => console.log("Redis Client Error", err))
+    .on("error", (err) => console.error("Redis Client Error", err))
     .connect();
 
   return client;
@@ -20,7 +20,7 @@ const sendOTPviaEmail = async (OTP: number) => {
   // TODO: Add a function to avoid getting spammed for resend
 
   // TODO: Send an email to user
-  console.log(
+  console.info(
     `Please verify your email by entering this OTP ${OTP.toString()} in the verification page`,
   );
 

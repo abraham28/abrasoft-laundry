@@ -2,7 +2,7 @@ import React from "react";
 import "css/globals.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { OFFICIAL_DOMAIN_URL } from "./constants";
+import { BASE_URL } from "./constants";
 
 const inter = Inter({
   style: "normal",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   ],
   robots: { index: true, follow: true },
   alternates: {
-    canonical: OFFICIAL_DOMAIN_URL,
+    canonical: BASE_URL,
   },
   manifest: "/manifest.webmanifest",
 };
