@@ -1,4 +1,3 @@
-import { getCookie } from "cookies-next";
 import debounce from "debounce-promise";
 
 export const handleFetchApi: <T>(
@@ -7,17 +6,7 @@ export const handleFetchApi: <T>(
 ) => Promise<T> = debounce(
   async (input: RequestInfo, init: RequestInit | undefined) => {
     try {
-      // Get the JWT cookie from cookies-next
-      const jwtCookie = getCookie("jwt");
-
-      // Use the Headers object in the fetch request
-      const res = await fetch(input, {
-        ...init,
-        headers: {
-          ...(init && init.headers ? init.headers : {}),
-          Cookie: "jwt=" + jwtCookie,
-        },
-      });
+      const res = await fetch(input, init);
 
       if (res.ok) {
         const data = await res.json();

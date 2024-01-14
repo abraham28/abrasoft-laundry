@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
+<<<<<<< HEAD
 import redisDb from "@/redis/redis-client";
 import { BASE_URL, REGISTER_VERIFY_EMAIL_ROUTE } from "@/app/constants";
+=======
+import redisDb from "../../../../redis/redis-client";
+>>>>>>> ce03246 (fixed bug on vercel preview failed to fetch maybe due to wrong implementaion of fetch)
 import { User } from "next-auth";
 
 export async function POST(req: NextRequest) {
