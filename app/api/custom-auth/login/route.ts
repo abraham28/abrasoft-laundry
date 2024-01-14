@@ -5,12 +5,6 @@ import { User } from "next-auth";
 
 export async function POST(req: NextRequest) {
   try {
-    if (!process.env.NEXTAUTH_SECRET) {
-      throw new Error(
-        "NEXTAUTH_SECRET is not set. contact system administrator.",
-      );
-    }
-
     if (req.method !== "POST")
       return NextResponse.json(
         { error: "Method Not Allowed" },

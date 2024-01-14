@@ -5,13 +5,6 @@ import redisDb from "../../../../redis/redis-client";
 
 export async function POST(req: NextRequest) {
   try {
-    // Check if NEXTAUTH_SECRET is set before proceeding
-    if (!process.env.NEXTAUTH_SECRET) {
-      throw new Error(
-        "NEXTAUTH_SECRET is not set. Unable to proceed with the operation.",
-      );
-    }
-
     if (req.method !== "POST") {
       return NextResponse.json(
         { error: "Method Not Allowed" },
