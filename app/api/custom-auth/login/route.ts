@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import redisDb from "../../../../redis/redis-client";
+import { User } from "next-auth";
 
 export async function POST(req: NextRequest) {
   try {
@@ -39,12 +40,13 @@ export async function POST(req: NextRequest) {
         { status: 401 },
       );
 
-    const cookieData = {
+    const userData: User = {
+      id: user_data.user_id,
       email: user_data.user_email,
     };
 
     return NextResponse.json(
-      { success: true, message: "Login successful", data: cookieData },
+      { success: true, message: "Login successful", data: userData },
       {
         status: 200,
       },

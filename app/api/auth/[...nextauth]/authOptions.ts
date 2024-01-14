@@ -1,5 +1,6 @@
 import { API_LOGIN_URL, LOGIN_ROUTE, REGISTER_ROUTE } from "@/app/constants";
-import { AuthOptions } from "next-auth";
+import { handleFetchApi } from "@/helpers/handleFetchApi";
+import { AuthOptions, User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 export const authOptions: AuthOptions = {
@@ -13,7 +14,7 @@ export const authOptions: AuthOptions = {
       },
       async authorize(credentials) {
         try {
-          const res = await fetch(API_LOGIN_URL, {
+          const data = await handleFetchApi<User>(API_LOGIN_URL, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -21,13 +22,7 @@ export const authOptions: AuthOptions = {
             body: JSON.stringify(credentials),
           });
 
-          if (res.ok) {
-            const data = await res.json();
-            return data;
-          } else {
-            const errorData = await res.json();
-            throw new Error(errorData.error);
-          }
+          return data;
         } catch (error) {
           if (error instanceof Error) {
             throw new Error(error.message);
