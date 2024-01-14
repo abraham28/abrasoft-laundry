@@ -15,6 +15,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
 import { handleFetchApi } from "@/helpers/handleFetchApi";
+import { API_REGISTER_URL, REGISTER_VERIFY_EMAIL_ROUTE } from "@/app/constants";
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -28,14 +29,17 @@ const RegisterForm = () => {
   });
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    handleFetchApi("http://localhost:3000/api/auth/register", {
+    handleFetchApi(API_REGISTER_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     })
-      .then(() => router.push("register/verify-email"))
+      .then(() => {
+        const encryptedEmail = btoa(data.email);
+        router.push(`${REGISTER_VERIFY_EMAIL_ROUTE}?email=${encryptedEmail}`);
+      })
       .catch((error) => setError("root", { message: error.message }));
   };
 

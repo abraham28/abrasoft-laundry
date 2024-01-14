@@ -1,16 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
-import { setCookie } from "cookies-next";
-import { generateJWT, generateUUID, hashPassword } from "../../helpers";
+import { generateOTP, generateUUID, hashPassword } from "../../helpers";
 import { emailSchema, passwordSchema } from "@/helpers/validators";
-import { kv } from "@vercel/kv";
-import { DB, UUID, User } from "../../models";
+import redisClient from "../../redis-client";
+import { WatchError } from "redis";
 
 export async function POST(req: NextRequest) {
+  const client = await redisClient();
   try {
-    // Check if JWT_SECRET_KEY is set before proceeding
-    if (!process.env.JWT_SECRET_KEY) {
+    // Check if NEXTAUTH_SECRET is set before proceeding
+    if (!process.env.NEXTAUTH_SECRET) {
       throw new Error(
-        "JWT_SECRET_KEY is not set. Unable to proceed with the operation.",
+        "NEXTAUTH_SECRET is not set. Unable to proceed with the operation.",
       );
     }
 
@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { email, password, confirmPassword, remember } = await req.json();
+    const { email, password, confirmPassword } = await req.json();
 
     const emailValidation = await emailSchema
       .validate(email, { abortEarly: false })
@@ -53,9 +53,13 @@ export async function POST(req: NextRequest) {
     }
 
     // Check if the email is already registered
-    const userIdResult = await kv.get<DB["user_email:[email]"]>(email);
+    const userIdResult = await client.get(`user_email:${email}`);
+    const isEmailVerified = await client.hGet(
+      `user:${userIdResult}`,
+      "user_email_verified",
+    );
 
-    if (userIdResult !== null) {
+    if (isEmailVerified && Number(isEmailVerified) === 1) {
       return NextResponse.json(
         { error: "Email is already registered" },
         { status: 400 },
@@ -85,46 +89,64 @@ export async function POST(req: NextRequest) {
 
     // Hash the password before storing it in the database
     const hashedPassword = await hashPassword(password);
+    const OTP = generateOTP();
 
     // Insert the new user into the database
-    const user_id = generateUUID();
-    const user_data: User = {
+    const user_id = userIdResult || generateUUID();
+    const user_data = {
       user_id: user_id,
       user_email: email,
       user_password: hashedPassword,
     };
-    kv.set(`user_email:${email}`, user_id as UUID);
-    kv.hset(`user:${user_id}`, { ...user_data });
 
-    // Set a JWT token if "remember" option is selected
-    if (remember) {
-      const userData = {
-        email: user_data.user_email,
-      };
+    const createKvUserResults = await client.executeIsolated(
+      async (isolatedClient) => {
+        await isolatedClient.watch(`user_email:${email}`);
 
-      const token = generateJWT(userData);
-      setCookie("jwt", token, {
-        path: "/",
-        maxAge: 30 * 24 * 60 * 60, // 30 days in seconds
-        httpOnly: true,
-        sameSite: "lax",
-      });
+        // TODO: Send an email to user
+        console.log(
+          `Please verify your email by entering this OTP ${OTP.toString()} in the verification page`,
+        );
 
+        const result = await isolatedClient
+          .multi()
+          .set(`user_email:${email}`, user_id)
+          .set(`otp:${email}`, OTP)
+          .hSet(`user:${user_id}`, user_data)
+          .exec();
+        isolatedClient.disconnect();
+        return result;
+      },
+    );
+
+    if (createKvUserResults.every((result) => !result))
       return NextResponse.json(
-        { success: true, message: "Registration successful" },
-        { status: 200, headers: { "Set-Cookie": "jwt=" + token } },
+        { error: "User creation error occured" },
+        { status: 500 },
       );
-    }
 
     return NextResponse.json(
-      { success: true, message: "Registration successful" },
-      { status: 200 },
+      {
+        success: true,
+        message:
+          "Successfully registered, Please verify email on the next step",
+      },
+      {
+        status: 200,
+      },
     );
   } catch (error) {
-    console.error("Error in registration route:", error);
+    if (error instanceof WatchError)
+      return NextResponse.json(
+        { error: "User creation transaction aborted" },
+        { status: 500 },
+      );
+
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 },
     );
+  } finally {
+    client.disconnect();
   }
 }

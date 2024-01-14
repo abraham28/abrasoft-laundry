@@ -2,8 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import RegisterForm from "@/components/Forms/RegisterForm";
+import {
+  COMPANY_REGISTER_ROUTE,
+  CUSTOMER_DASHBOARD_ROUTE,
+  LOGIN_ROUTE,
+} from "@/app/constants";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
-const Page = () => {
+const Page = async () => {
+  const session = await getServerSession(authOptions);
+  if (session) redirect(CUSTOMER_DASHBOARD_ROUTE);
+
   return (
     <div style={{ display: "grid", gap: 16 }}>
       <Image
@@ -19,11 +30,11 @@ const Page = () => {
       <RegisterForm />
       <p>
         Already have an account?&nbsp;
-        <Link href={"/login"}>Login</Link>
+        <Link href={LOGIN_ROUTE}>Login</Link>
       </p>
       <p>
         Are you a company owner?&nbsp;
-        <Link href={"/register-company"}>Register Company</Link>
+        <Link href={COMPANY_REGISTER_ROUTE}>Register Company</Link>
       </p>
     </div>
   );

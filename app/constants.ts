@@ -6,6 +6,14 @@ export const OFFICIAL_DOMAIN_URL = `https://${OFFICIAL_DOMAIN}/`;
 
 export const COPYRIGHT = "© 2023 Abrasoft Corporation";
 
+export const NOT_FOUND_ROUTE = "/not-found";
+
+export const FORGOT_PASSWORD_ROUTE = "/forgot-password";
+export const LOGIN_ROUTE = "/login";
+export const REGISTER_ROUTE = "/register";
+export const COMPANY_REGISTER_ROUTE = "/register-company";
+export const REGISTER_VERIFY_EMAIL_ROUTE = "/register/verify-email";
+export const VERIFY_EMAIL_SUCCESS_ROUTE = "/register/verify-email/success";
 export const LOGOUT_ROUTE = "/logout";
 
 // Customer Nav Links Routes
@@ -53,3 +61,9 @@ export const EMPLOYEE_NAV_LINKS_ARR = [
 export const COMPANY_DETAILS_ROUTE = "/admin/company-details/";
 export const COMPANY_EDIT_HEADER_ROUTE = "/admin/company-details/edit-header";
 export const COMPANY_EDIT_DETAILS_ROUTE = "/admin/company-details/edit-details";
+
+const BASE_URL = "http://localhost:3000";
+export const API_LOGIN_URL = `${BASE_URL}/api/custom-auth/login`;
+export const API_REGISTER_URL = `${BASE_URL}/api/custom-auth/register`;
+export const API_VERIFY_EMAIL_URL = `${BASE_URL}/api/custom-auth/register/verify-email`;
+export const API_VERIFY_EMAIL_RESEND_URL = `${BASE_URL}/api/custom-auth/register/resend-otp`;

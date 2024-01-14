@@ -1,3 +1,4 @@
+import { LOGIN_ROUTE } from "@/app/constants";
 import ForgotPasswordForm from "@/components/Forms/ForgotPasswordForm";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,7 +19,8 @@ const ForgotPassword = () => {
       </h1>
       <ForgotPasswordForm />
       <p>
-        Still remember your password? Go to <Link href={"/login"}>Login</Link>
+        Still remember your password? Go to{" "}
+        <Link href={LOGIN_ROUTE}>Login</Link>
       </p>
     </div>
   );

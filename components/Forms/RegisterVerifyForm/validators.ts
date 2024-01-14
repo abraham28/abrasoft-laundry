@@ -4,8 +4,9 @@ export type Inputs = {
   otp: string;
 };
 
-export const registerFormSchema: Yup.ObjectSchema<Inputs> = Yup.object().shape({
-  otp: Yup.string()
-    .required("Password is required")
-    .min(6, "Password is incorrect"),
-});
+export const emailVerificationOTPSchema: Yup.ObjectSchema<Inputs> =
+  Yup.object().shape({
+    otp: Yup.string()
+      .required("Please enter your One Time Pin (OTP)")
+      .min(6, "Invalid OTP"),
+  });

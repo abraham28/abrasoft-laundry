@@ -10,9 +10,11 @@ export interface User {
   user_contact_number?: string;
   user_address?: string;
   user_birthday?: Date;
+  user_email_verified?: number;
 }
 
 export interface DB {
   "user:[user_id]": User;
   "user_email:[email]": UUID;
+  "otp:[email]": number;
 }
