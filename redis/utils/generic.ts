@@ -1,5 +1,21 @@
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { v4 as uuidv4 } from "uuid";
+
+export const generateJWT = (userData: { email: string }) => {
+  const secretKey = process.env.NEXTAUTH_SECRET;
+
+  if (!secretKey) {
+    throw new Error(
+      "NEXTAUTH_SECRET is not set. Unable to generate JWT token.",
+    );
+  }
+
+  const token = jwt.sign(userData, secretKey, {
+    expiresIn: "1h",
+  });
+  return token;
+};
 
 export async function hashPassword(password: string): Promise<string> {
   const saltRounds = 10;
