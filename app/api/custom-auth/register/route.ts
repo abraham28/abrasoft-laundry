@@ -14,25 +14,17 @@ export async function POST(req: NextRequest) {
 
     const { email, password, confirmPassword } = await req.json();
 
-    const emailValidation = await emailSchema
+    const validationError = await emailSchema
       .validate(email, { abortEarly: false })
-      .then(() => {
-        // Continue with the rest of your logic if validation passes
-        return NextResponse.json({
-          success: true,
-          message: "Validation successful",
-        });
-      })
+      .then(() => null)
       .catch((validationError) => {
-        // Send the detailed error message from the Yup schema
-        return NextResponse.json(
-          { error: validationError.errors[0] },
-          { status: 400 },
-        );
+        return validationError && validationError.errors
+          ? (validationError.errors[0] as string)
+          : null;
       });
 
-    if (!emailValidation.ok) {
-      return emailValidation;
+    if (validationError) {
+      return NextResponse.json({ error: validationError }, { status: 405 });
     }
 
     // Validate password and confirmPassword match

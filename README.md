@@ -37,6 +37,7 @@ To run the backend redis server
 install and run docker before running
 
 `docker run -d --name redis-stack -p 6379:6379 -e REDIS_ARGS="--requirepass mypassword" redis/redis-stack-server:latest`
+`docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres`
 
 To run the project in development mode:
 `npm run dev`
