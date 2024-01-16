@@ -1,0 +1,32 @@
+version: "3.1"
+
+services:
+  # db:
+  #   container_name: postgres_container
+  #   image: postgres
+  #   restart: always
+  #   env_file:
+  #     - .env.local
+  #   ports:
+  #     - "5432:5432"
+
+  # adminer:
+  #   container_name: adminer_container
+  #   image: adminer
+  #   restart: always
+  #   ports:
+  #     - 8080:8080
+
+  nextjs:
+    container_name: nextjs_container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env.local
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/nextjs
+    environment:
+      - NODE_ENV=development
