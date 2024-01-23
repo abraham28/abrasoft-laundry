@@ -1,0 +1,12 @@
+.listItem {
+  list-style: none;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.accessListContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.accessListItem {
+  padding: var(--padding-base);
+}

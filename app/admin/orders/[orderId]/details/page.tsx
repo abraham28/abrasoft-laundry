@@ -51,7 +51,7 @@ const Page = () => {
       <OrderDeduction />
       <AddPaymentButton routerPath={PAYMENTS_ROUTE} />
       <OrderSlipButton routerPath={ORDER_SLIP_ROUTE} />
-      <SaveButton />
+      <SaveButton buttonType="submit" />
       <VoidOrder routerPath={PAYMENTS_ROUTE} />
     </div>
   );

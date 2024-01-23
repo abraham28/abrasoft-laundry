@@ -13,6 +13,7 @@ import { forgotFormSchema, Inputs } from "./validators";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
+import { SET_NEW_PASSWORD_ROUTE } from "@/app/constants";
 
 const ForgotPasswordForm = () => {
   const router = useRouter();
@@ -41,7 +42,7 @@ const ForgotPasswordForm = () => {
       </FormGroup>
 
       <Button
-        onClick={() => router.push("/forgot-password/verify-email")}
+        onClick={() => router.push(SET_NEW_PASSWORD_ROUTE)}
         type="submit"
         className="w-100"
       >

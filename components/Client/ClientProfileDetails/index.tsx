@@ -5,27 +5,39 @@ const ClientProfileDetails = () => {
   return (
     <div className={styles.profileDetailsAlignment}>
       <div>
-        <p>First Name</p>
+        <p>
+          <b>First Name</b>
+        </p>
         <p>Customer</p>
       </div>
       <div>
-        <p>Last Name</p>
+        <p>
+          <b>Last Name</b>
+        </p>
         <p>Customer</p>
       </div>
       <div>
-        <p>Email</p>
+        <p>
+          <b>Email</b>
+        </p>
         <p>customeremail@gmail.com</p>
       </div>
       <div>
-        <p>Birthday</p>
+        <p>
+          <b>Birthday</b>
+        </p>
         <p>Dececmber 25, 2023</p>
       </div>
       <div>
-        <p>Contact Number</p>
+        <p>
+          <b>Contact Number</b>
+        </p>
         <p>No contact number3</p>
       </div>
       <div>
-        <p>Address</p>
+        <p>
+          <b>Address</b>
+        </p>
         <p>123 Anywhere st.</p>
       </div>
     </div>

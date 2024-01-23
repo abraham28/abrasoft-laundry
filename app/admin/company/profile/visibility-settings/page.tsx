@@ -41,7 +41,7 @@ const Page = () => {
         <p>
           <b>Company Header Preview</b>
         </p>
-        <SaveButton />
+        <SaveButton buttonType="submit" />
       </div>
 
       <CompanyAdminProfile />

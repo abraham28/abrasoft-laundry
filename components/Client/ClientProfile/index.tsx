@@ -12,7 +12,7 @@ const ClientProfile = () => {
         />
       </div>
       <h2 className="text-center mt-3">Customer Name</h2>
-      <h3 className="text-center">customeremail@gmail.com</h3>
+      <h5 className="text-center text-muted">customeremail@gmail.com</h5>
     </div>
   );
 };

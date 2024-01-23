@@ -12,12 +12,7 @@ const AddPaymentButton: React.FC<AddPaymentButtonProps> = ({ routerPath }) => {
   return (
     <Button
       onClick={() => router.push(routerPath)}
-      style={{
-        backgroundColor: "var(--secondary)",
-        color: "var(--light)",
-        textDecoration: "none",
-      }}
-      variant="link"
+      variant="secondary"
       className="w-100"
     >
       Add Payment

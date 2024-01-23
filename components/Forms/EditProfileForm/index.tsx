@@ -30,7 +30,9 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ id }) => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <FormGroup>
-        <FormLabel>First Name</FormLabel>
+        <FormLabel>
+          <b>First Name</b>
+        </FormLabel>
         <FormControl
           {...register("firstName", { required: true })}
           isInvalid={!!errors.firstName}
@@ -40,7 +42,9 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ id }) => {
         </FormControl.Feedback>
       </FormGroup>
       <FormGroup>
-        <FormLabel>Last Name</FormLabel>
+        <FormLabel>
+          <b>Last Name</b>
+        </FormLabel>
         <FormControl
           {...register("lastName", { required: true })}
           isInvalid={!!errors.lastName}
@@ -50,7 +54,9 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ id }) => {
         </FormControl.Feedback>
       </FormGroup>
       <FormGroup>
-        <FormLabel>Email</FormLabel>
+        <FormLabel>
+          <b>Email</b>
+        </FormLabel>
         <FormControl
           {...register("email", { required: true })}
           isInvalid={!!errors.email}
@@ -60,7 +66,9 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ id }) => {
         </FormControl.Feedback>
       </FormGroup>
       <FormGroup>
-        <FormLabel>Birthday</FormLabel>
+        <FormLabel>
+          <b>Birthday</b>
+        </FormLabel>
         <FormControl
           {...register("birthday", { required: true })}
           isInvalid={!!errors.birthday}
@@ -70,7 +78,9 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ id }) => {
         </FormControl.Feedback>
       </FormGroup>
       <FormGroup>
-        <FormLabel>Contact Number</FormLabel>
+        <FormLabel>
+          <b>Contact Number</b>
+        </FormLabel>
         <FormControl
           {...register("contactNumber", { required: true })}
           isInvalid={!!errors.contactNumber}
@@ -80,7 +90,9 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ id }) => {
         </FormControl.Feedback>
       </FormGroup>
       <FormGroup>
-        <FormLabel>Address</FormLabel>
+        <FormLabel>
+          <b>Address</b>
+        </FormLabel>
         <FormControl
           {...register("address", { required: true })}
           isInvalid={!!errors.address}

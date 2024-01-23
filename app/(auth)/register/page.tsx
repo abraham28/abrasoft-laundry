@@ -18,12 +18,12 @@ const Page = () => {
       </h1>
       <RegisterForm />
       <p>
-        Already have an account?&nbsp;
-        <Link href={"/login"}>Login</Link>
+        Already have an account?&nbsp; Go to{" "}
+        <Link href={LOGIN_ROUTE}>Login</Link>
       </p>
       <p>
-        Are you a company owner?&nbsp;
-        <Link href={"/register-company"}>Register Company</Link>
+        Are you a company owner?&nbsp; Go to{" "}
+        <Link href={COMPANY_REGISTER_ROUTE}>Company Registration</Link>
       </p>
     </div>
   );

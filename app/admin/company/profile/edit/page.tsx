@@ -11,7 +11,7 @@ const Page = () => {
         <p>
           <b>Company Details</b>
         </p>
-        <SaveButton form="editCompanyDetailsForm" />
+        <SaveButton buttonType="submit" />
       </div>
 
       <EditCompanyDetailsForm id="editCompanyDetailsForm" />

@@ -6,6 +6,15 @@ export const OFFICIAL_DOMAIN_URL = `https://${OFFICIAL_DOMAIN}/`;
 
 export const COPYRIGHT = "© 2023 Abrasoft Corporation";
 
+export const NOT_FOUND_ROUTE = "/not-found";
+
+export const FORGOT_PASSWORD_ROUTE = "/forgot-password";
+export const SET_NEW_PASSWORD_ROUTE = `${FORGOT_PASSWORD_ROUTE}/set-password`;
+export const LOGIN_ROUTE = "/login";
+export const REGISTER_ROUTE = "/register";
+export const COMPANY_REGISTER_ROUTE = "/register-company";
+export const REGISTER_VERIFY_EMAIL_ROUTE = "/register/verify-email";
+export const VERIFY_EMAIL_SUCCESS_ROUTE = "/register/verify-email/success";
 export const LOGOUT_ROUTE = "/logout";
 
 // Customer Nav Links Routes
@@ -28,15 +37,17 @@ export const ORDER_SLIP_ROUTE = "./orders/slip";
 export const PAYMENT_AMOUNT_ROUTE = "/admin/orders/payment/amount";
 
 // Employee Nav Links Routes
-export const EMPLOYEE_DASHBOARD_ROUTE = "/admin/";
+export const EMPLOYEE_DASHBOARD_ROUTE = "/admin";
 export const COMPANY_MANAGEMENT_ROUTE = "/admin/company-management";
-export const EMPLOYEES_ROUTE = "/admin/employee";
+export const EMPLOYEES_ROUTE = "/admin/employees";
 export const EMPLOYEE_ORDERS_ROUTE = "/admin/orders";
 export const PURCHASES_ROUTE = "/admin/purchases";
 export const EMPLOYEE_PRODUCTS_ROUTE = "/admin/orders/products";
 export const PAYMENTS_ROUTE = "/admin/orders/payment";
 export const EXPENSES_ROUTE = "/admin/expenses";
 export const REPORTS_ROUTE = "/admin/reports";
+export const ROLES_ROUTE = `${EMPLOYEE_DASHBOARD_ROUTE}/roles/`;
+export const ROLES_MANAGEMENT_EDIT_ROUTE = `${ROLES_ROUTE}/[userId]/details`;
 
 export const EMPLOYEE_NAV_LINKS_ARR = [
   { path: EMPLOYEE_DASHBOARD_ROUTE, name: "Dashboard" },
