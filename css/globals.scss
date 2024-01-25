@@ -108,6 +108,12 @@ body {
   }
 }
 
+.btn-link {
+  padding: 0 !important;
+  color: var(--primary);
+  text-decoration: none;
+}
+
 .form-label {
   font-weight: 500;
   font-size: var(--font-size-2xs);

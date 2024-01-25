@@ -1,19 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { setCookie } from "cookies-next";
-import { generateJWT, generateUUID, hashPassword } from "../../helpers";
+import { generateUUID, hashPassword } from "../../../../redis/utils/generic";
 import { emailSchema, passwordSchema } from "@/helpers/validators";
-import { kv } from "@vercel/kv";
-import { DB, UUID, User } from "../../models";
+import redisDb from "../../../../redis/redis-client";
 
 export async function POST(req: NextRequest) {
   try {
-    // Check if JWT_SECRET_KEY is set before proceeding
-    if (!process.env.JWT_SECRET_KEY) {
-      throw new Error(
-        "JWT_SECRET_KEY is not set. Unable to proceed with the operation.",
-      );
-    }
-
     if (req.method !== "POST") {
       return NextResponse.json(
         { error: "Method Not Allowed" },
@@ -21,7 +12,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { email, password, confirmPassword, remember } = await req.json();
+    const { email, password, confirmPassword } = await req.json();
 
     const emailValidation = await emailSchema
       .validate(email, { abortEarly: false })
@@ -52,10 +43,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Check if the email is already registered
-    const userIdResult = await kv.get<DB["user_email:[email]"]>(email);
-
-    if (userIdResult !== null) {
+    if (await redisDb.isUserEmailVerified(email)) {
       return NextResponse.json(
         { error: "Email is already registered" },
         { status: 400 },
@@ -85,43 +73,33 @@ export async function POST(req: NextRequest) {
 
     // Hash the password before storing it in the database
     const hashedPassword = await hashPassword(password);
+    const existingUserId = await redisDb.getUserIdByEmail(email);
 
     // Insert the new user into the database
-    const user_id = generateUUID();
-    const user_data: User = {
+    const user_id = existingUserId || generateUUID();
+    const user_data = {
       user_id: user_id,
       user_email: email,
       user_password: hashedPassword,
     };
-    kv.set(`user_email:${email}`, user_id as UUID);
-    kv.hset(`user:${user_id}`, { ...user_data });
 
-    // Set a JWT token if "remember" option is selected
-    if (remember) {
-      const userData = {
-        email: user_data.user_email,
-      };
-
-      const token = generateJWT(userData);
-      setCookie("jwt", token, {
-        path: "/",
-        maxAge: 30 * 24 * 60 * 60, // 30 days in seconds
-        httpOnly: true,
-        sameSite: "lax",
-      });
-
-      return NextResponse.json(
-        { success: true, message: "Registration successful" },
-        { status: 200, headers: { "Set-Cookie": "jwt=" + token } },
-      );
-    }
+    const createdUser = await redisDb.createUser(user_data);
+    if (!createdUser) throw new Error("Failed to create User");
 
     return NextResponse.json(
-      { success: true, message: "Registration successful" },
-      { status: 200 },
+      {
+        success: true,
+        message:
+          "Successfully registered, Please verify email on the next step",
+      },
+      {
+        status: 200,
+      },
     );
   } catch (error) {
-    console.error("Error in registration route:", error);
+    if (error instanceof Error)
+      return NextResponse.json({ error: error.message }, { status: 500 });
+
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 },

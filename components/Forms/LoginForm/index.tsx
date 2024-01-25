@@ -5,7 +5,6 @@ import {
   Alert,
   Button,
   Form,
-  FormCheck,
   FormControl,
   FormGroup,
   FormLabel,
@@ -16,7 +15,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CUSTOMER_DASHBOARD_ROUTE } from "@/app/constants";
 import { useRouter } from "next/navigation";
-import { handleFetchApi } from "@/helpers/handleFetchApi";
+import { signIn } from "next-auth/react";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -29,16 +28,28 @@ const LoginForm = () => {
     resolver: yupResolver(loginFormSchema),
   });
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    handleFetchApi("http://localhost:3000/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    signIn("credentials", {
+      ...data,
+      redirect: false,
     })
-      .then(() => router.push(CUSTOMER_DASHBOARD_ROUTE))
-      .catch((error) => setError("root", { message: error.message }));
+      .then((response) => {
+        if (response && response.error) {
+          try {
+            const errorJson = JSON.parse(response.error);
+            if (errorJson.emailVerificationLink) {
+              router.replace(errorJson.emailVerificationLink);
+            }
+          } catch (error) {
+            setError("root", { message: response.error });
+          }
+          return;
+        }
+        router.push(CUSTOMER_DASHBOARD_ROUTE);
+      })
+      .catch((error) => {
+        setError("root", { message: error.message });
+      });
   };
 
   return (
@@ -65,18 +76,6 @@ const LoginForm = () => {
         <FormControl.Feedback type="invalid">
           {errors.password?.message}
         </FormControl.Feedback>
-      </FormGroup>
-
-      <FormGroup className="d-flex gap-1">
-        <FormCheck
-          id="remember"
-          type="checkbox"
-          {...register("remember")}
-          isInvalid={!!errors.remember}
-        />
-        <FormLabel style={{ margin: 0 }} htmlFor="remember">
-          Remember this device
-        </FormLabel>
       </FormGroup>
 
       {errors.root && errors.root.message && (
