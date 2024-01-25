@@ -14,11 +14,12 @@ import { loginFormSchema, Inputs } from "./validators";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CUSTOMER_DASHBOARD_ROUTE } from "@/app/constants";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 
 const LoginForm = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const {
     register,
     handleSubmit,
@@ -45,7 +46,9 @@ const LoginForm = () => {
           }
           return;
         }
-        router.push(CUSTOMER_DASHBOARD_ROUTE);
+        router.push(
+          searchParams.get("callbackUrl") || CUSTOMER_DASHBOARD_ROUTE,
+        );
       })
       .catch((error) => {
         setError("root", { message: error.message });

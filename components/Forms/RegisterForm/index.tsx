@@ -15,7 +15,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
 import { handleFetchApi } from "@/helpers/handleFetchApi";
-import { API_REGISTER_URL, REGISTER_VERIFY_EMAIL_ROUTE } from "@/app/constants";
+import { API_REGISTER_URL, OTP_VERIFICATION_ROUTE } from "@/app/constants";
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -38,7 +38,7 @@ const RegisterForm = () => {
     })
       .then(() => {
         const encryptedEmail = btoa(data.email);
-        router.push(`${REGISTER_VERIFY_EMAIL_ROUTE}?email=${encryptedEmail}`);
+        router.push(`${OTP_VERIFICATION_ROUTE}?email=${encryptedEmail}`);
       })
       .catch((error) => setError("root", { message: error.message }));
   };

@@ -8,14 +8,15 @@ export const COPYRIGHT = "© 2023 Abrasoft Corporation";
 
 export const NOT_FOUND_ROUTE = "/not-found";
 
-export const FORGOT_PASSWORD_ROUTE = "/forgot-password";
+export const AUTH_ROUTE = "/auth";
+export const FORGOT_PASSWORD_ROUTE = `${AUTH_ROUTE}/forgot-password`;
 export const SET_NEW_PASSWORD_ROUTE = `${FORGOT_PASSWORD_ROUTE}/set-password`;
-export const LOGIN_ROUTE = "/login";
-export const REGISTER_ROUTE = "/register";
-export const COMPANY_REGISTER_ROUTE = "/register/company";
-export const REGISTER_VERIFY_EMAIL_ROUTE = "/register/verify-email";
-export const VERIFY_EMAIL_SUCCESS_ROUTE = "/register/verify-email/success";
-export const LOGOUT_ROUTE = "/logout";
+export const LOGIN_ROUTE = `${AUTH_ROUTE}/login`;
+export const LOGOUT_ROUTE = `${AUTH_ROUTE}/logout`;
+export const REGISTER_ROUTE = `${AUTH_ROUTE}/register`;
+export const COMPANY_REGISTER_ROUTE = `${AUTH_ROUTE}/register/company`;
+export const OTP_VERIFICATION_ROUTE = `${AUTH_ROUTE}/otp-verification`;
+export const OTP_VERIFICATION_SUCCESS_ROUTE = `${AUTH_ROUTE}/otp-verification`;
 
 // Customer Nav Links Routes
 export const CUSTOMER_DASHBOARD_ROUTE = "/dashboard";
@@ -29,7 +30,6 @@ export const CUSTOMER_NAV_LINKS_ARR = [
   { path: CUSTOMER_DASHBOARD_ROUTE, name: "Dashboard" },
   { path: CUSTOMER_PROFILE_ROUTE, name: "Profile" },
   { path: CUSTOMER_ORDERS_ROUTE, name: "Orders" },
-  { path: POINTS_ROUTE, name: "Points" },
   { path: LOGOUT_ROUTE, name: "Logout " },
 ];
 

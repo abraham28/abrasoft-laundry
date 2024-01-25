@@ -1,6 +1,19 @@
 version: "3.1"
 
 services:
+  redisDb:
+    image: redis/redis-stack
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass mypassword
+    volumes:
+      - redisDb:/data
+
+volumes:
+  redisDb:
+    driver: local
+
   # db:
   #   container_name: postgres_container
   #   image: postgres
@@ -17,16 +30,16 @@ services:
   #   ports:
   #     - 8080:8080
 
-  nextjs:
-    container_name: nextjs_container
-    build:
-      context: .
-      dockerfile: Dockerfile
-    env_file:
-      - .env.local
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/nextjs
-    environment:
-      - NODE_ENV=development
+  # nextjs:
+  #   container_name: nextjs_container
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   env_file:
+  #     - .env.local
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - .:/nextjs
+  #   environment:
+  #     - NODE_ENV=development

@@ -32,7 +32,7 @@ const NotFoundPage = () => {
         />
         <h1 style={{ marginBottom: "2rem", fontSize: 24 }}>{"404-message"}</h1>
         <Link href={HOME_ROUTE}>
-          <Button>{"go-back-home"}</Button>
+          <Button>Go Back Home</Button>
         </Link>
       </Container>
     </div>

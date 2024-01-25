@@ -7,26 +7,32 @@ import { Container, NavbarBrand } from "react-bootstrap";
 import Link from "next/link";
 import Image from "next/image";
 import CompanyLogo from "public/images/company-logo.webp";
-import * as constants from "@/app/constants";
 import styles from "./Header.module.scss";
 import { createContext } from "react";
 
-export const NavLinksContext = createContext(constants.NAV_LINKS_ARR);
+const defaultNavLinks = [{ path: "/", name: "Home" }];
+
+export const NavLinksContext = createContext(defaultNavLinks);
 
 interface HeaderProps {
+  /**
+   * Link url to be navigated to when brand logo is clicked
+   * @example "/home"
+   */
+  brandLink?: string;
   navLinks?: {
     path: string;
     name: string;
   }[];
 }
 
-const Header: React.FC<HeaderProps> = ({ navLinks }) => {
+const Header: React.FC<HeaderProps> = ({ navLinks, brandLink = "/" }) => {
   return (
     <nav className={styles.navBar}>
-      <NavLinksContext.Provider value={navLinks || constants.NAV_LINKS_ARR}>
+      <NavLinksContext.Provider value={navLinks || defaultNavLinks}>
         <Container className={styles.innerContainer}>
           <NavbarBrand>
-            <Link className={styles.brandLink} href={constants.HOME_ROUTE}>
+            <Link className={styles.brandLink} href={brandLink}>
               <Image
                 src={CompanyLogo}
                 alt="Company Logo"

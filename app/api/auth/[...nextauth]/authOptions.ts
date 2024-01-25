@@ -1,7 +1,7 @@
 import { API_LOGIN_URL, LOGIN_ROUTE, REGISTER_ROUTE } from "@/app/constants";
 import { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { POST as LoginWithCredentialsAPI } from "../../custom-auth/login/route";
+import { POST as LoginWithCredentialsAPI } from "@/app/api/custom-auth/login/route";
 import { NextRequest } from "next/server";
 
 export const authOptions: NextAuthOptions = {

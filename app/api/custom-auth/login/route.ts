@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import redisDb from "@/redis/redis-client";
-import { BASE_URL, REGISTER_VERIFY_EMAIL_ROUTE } from "@/app/constants";
+import { BASE_URL, OTP_VERIFICATION_ROUTE } from "@/app/constants";
 import { User } from "next-auth";
 
 export async function POST(req: NextRequest) {
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           error: "Please verify email first.",
-          emailVerificationLink: `${BASE_URL}/${REGISTER_VERIFY_EMAIL_ROUTE}?email=${encryptedEmail}`,
+          emailVerificationLink: `${BASE_URL}/${OTP_VERIFICATION_ROUTE}?email=${encryptedEmail}`,
         },
         { status: 401 },
       );
