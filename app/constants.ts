@@ -12,13 +12,13 @@ export const FORGOT_PASSWORD_ROUTE = "/forgot-password";
 export const SET_NEW_PASSWORD_ROUTE = `${FORGOT_PASSWORD_ROUTE}/set-password`;
 export const LOGIN_ROUTE = "/login";
 export const REGISTER_ROUTE = "/register";
-export const COMPANY_REGISTER_ROUTE = "/register-company";
+export const COMPANY_REGISTER_ROUTE = "/register/company";
 export const REGISTER_VERIFY_EMAIL_ROUTE = "/register/verify-email";
 export const VERIFY_EMAIL_SUCCESS_ROUTE = "/register/verify-email/success";
 export const LOGOUT_ROUTE = "/logout";
 
 // Customer Nav Links Routes
-export const CUSTOMER_DASHBOARD_ROUTE = "/";
+export const CUSTOMER_DASHBOARD_ROUTE = "/dashboard";
 export const CUSTOMER_PROFILE_ROUTE = "/profile";
 export const CUSTOMER_POINT_HISTORY_ROUTE = "/point-history";
 export const CUSTOMER_ORDERS_ROUTE = "/orders";

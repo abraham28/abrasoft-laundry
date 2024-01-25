@@ -14,7 +14,7 @@ const Page = () => {
       <div>
         <p>
           Already have an account&#63; Go to
-          <Link href={"/login"}> Register</Link>
+          <Link href={"/login"}> Login</Link>
         </p>
       </div>
     </div>

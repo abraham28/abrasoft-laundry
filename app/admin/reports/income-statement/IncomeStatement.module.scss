@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .dateWithBgColor {
   display: inline-block;
   background-color: var(--primary);
@@ -10,12 +11,15 @@
   color: var(--light);
   border-radius: 5px;
 }
+
 .greenText {
   color: var(--success);
 }
+
 .redText {
   color: var(--danger);
 }
+
 .bluetext {
   color: var(--primary);
 }
