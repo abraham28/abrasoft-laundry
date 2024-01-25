@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
-import redisDb from "../../../../redis/redis-client";
+import redisDb from "@/redis/redis-client";
 import { BASE_URL, REGISTER_VERIFY_EMAIL_ROUTE } from "@/app/constants";
 import { User } from "next-auth";
 

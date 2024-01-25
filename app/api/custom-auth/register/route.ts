@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { generateUUID, hashPassword } from "../../../../redis/utils/generic";
+import { generateUUID, hashPassword } from "@/redis/utils/generic";
 import { emailSchema, passwordSchema } from "@/helpers/validators";
-import redisDb from "../../../../redis/redis-client";
+import redisDb from "@/redis/redis-client";
 
 export async function POST(req: NextRequest) {
   try {
