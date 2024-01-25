@@ -16,7 +16,7 @@ const Page = () => {
     <div style={{ display: "grid", gap: 16 }}>
       <div className="d-flex justify-content-between">
         <h1 style={{ color: "var(--primary)" }}>Choose Products</h1>
-        <SaveButton />
+        <SaveButton buttonType="submit" />
       </div>
       <SearchBar />
       <p>Products</p>

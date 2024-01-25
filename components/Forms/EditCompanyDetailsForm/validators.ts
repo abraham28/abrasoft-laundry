@@ -1,4 +1,5 @@
 import * as Yup from "yup";
+import { emailSchema } from "@/helpers/validators";
 
 export type Inputs = {
   companyName: string;
@@ -17,18 +18,7 @@ export const editCompanyDetailsFormSchema: Yup.ObjectSchema<Inputs> =
     contactNumber: Yup.string()
       .required("Phone Number is required")
       .matches(/^[0-9]+$/, "Invalid phone number"),
-    companyEmail: Yup.string()
-      .required("Email is required")
-      .test(
-        "no-double-at",
-        "Multiple '@' symbols are not allowed",
-        (value?: string) =>
-          !value || value.indexOf("@", value.indexOf("@") + 1) === -1,
-      )
-      .matches(
-        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,}(\.[a-zA-Z]{1,})?$/,
-        "Invalid email format",
-      ),
+    companyEmail: emailSchema,
     companyWebsite: Yup.string()
       .required("Company Website is required")
       .matches(

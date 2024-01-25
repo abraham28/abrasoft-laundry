@@ -11,7 +11,7 @@ const NewRoleButton: React.FC<NewRoleButtonProps> = ({ routerPath }) => {
   const router = useRouter();
   return (
     <Button onClick={() => router.push(routerPath)} variant="primary">
-      New Role
+      New Employee
     </Button>
   );
 };

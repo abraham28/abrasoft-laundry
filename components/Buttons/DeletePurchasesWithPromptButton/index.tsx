@@ -4,7 +4,7 @@ import { ModalBody, ModalFooter } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-const DeleteButtonWithPrompt = () => {
+const DeletePurchasesWithPromptButton = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -26,7 +26,7 @@ const DeleteButtonWithPrompt = () => {
         <ModalFooter>
           <Button variant="danger">Delete</Button>
           <Button variant="primary" onClick={handleClose}>
-            Retain
+            Cancel
           </Button>
         </ModalFooter>
       </Modal>
@@ -34,4 +34,4 @@ const DeleteButtonWithPrompt = () => {
   );
 };
 
-export default DeleteButtonWithPrompt;
+export default DeletePurchasesWithPromptButton;

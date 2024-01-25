@@ -3,17 +3,19 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { Button } from "react-bootstrap";
 
-interface NewRoleButtonProps {
+interface CreatePurchasesButtonProps {
   routerPath: string;
 }
 
-const NewRoleButton: React.FC<NewRoleButtonProps> = ({ routerPath }) => {
+const CreatePurchasesButton: React.FC<CreatePurchasesButtonProps> = ({
+  routerPath,
+}) => {
   const router = useRouter();
   return (
     <Button onClick={() => router.push(routerPath)} variant="primary">
-      New Role
+      Create a purchase
     </Button>
   );
 };
 
-export default NewRoleButton;
+export default CreatePurchasesButton;
