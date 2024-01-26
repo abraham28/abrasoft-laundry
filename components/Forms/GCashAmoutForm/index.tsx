@@ -25,8 +25,8 @@ const GCashAmountForm: React.FC<GCashAmountFormProps> = ({ id }) => {
   return (
     <Form
       className={styles.form}
-      id={id}
       noValidate
+      id={id}
       onSubmit={handleSubmit(onSubmit)}
     >
       <FormGroup>

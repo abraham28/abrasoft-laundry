@@ -1,4 +1,4 @@
-import { EMPLOYEE_ROLE_EDIT_ROUTE } from "@/app/constants";
+import { ADMIN_CUSTOMER_EDIT_ROUTE } from "@/app/constants";
 import SearchBar from "@/components/Admin/SearchBar";
 import NewCustomerButton from "@/components/Buttons/NewCustomerButton";
 import React from "react";
@@ -18,7 +18,7 @@ const Page = () => {
         <p>
           <b>Employee List</b>
         </p>
-        <NewCustomerButton routerPath={EMPLOYEE_ROLE_EDIT_ROUTE} />
+        <NewCustomerButton routerPath={ADMIN_CUSTOMER_EDIT_ROUTE} />
       </div>
 
       {employeeList.map((dataItem, index) => {

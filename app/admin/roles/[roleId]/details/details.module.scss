@@ -11,4 +11,106 @@
 
 .accessListItem {
   padding: var(--padding-base);
+  display: flex;
+  align-items: center;
+}
+
+.labelCheckbox {
+  display: none;
+}
+
+.labelCheck {
+  border-radius: 50%;
+  background: var(--light);
+  vertical-align: middle;
+  margin-right: 20px;
+  width: 2em;
+  height: 2em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border 0.3s ease;
+  border: 2px solid rgb(0 0 0 / 20%);
+
+  i {
+    opacity: 0.2;
+    font-size: calc(1rem + 1vw);
+    color: transparent;
+    transition: opacity 0.3s 0.1s ease;
+    -webkit-text-stroke: 3px rgb(0 0 0 / 50%);
+  }
+
+  &:hover {
+    border: 2px solid rgb(0 0 0 / 20%);
+  }
+}
+
+.labelCheckbox:checked + .labelText .labelCheck {
+  animation: check 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22) forwards;
+}
+
+.labelText .labelCheck .myIcon {
+  opacity: 1;
+  transform: scale(0);
+  color: var(--light);
+  -webkit-text-stroke: 0;
+  animation: icon 0.3s cubic-bezier(1, 0.008, 0.565, 1.65) 0.1s 1 forwards;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes icon {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes check {
+  0% {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  10% {
+    width: 1.5em;
+    height: 1.5em;
+    opacity: 0.1;
+    background: rgb(0 0 0 / 20%);
+  }
+
+  12% {
+    width: 1.5em;
+    height: 100%;
+    opacity: 0.4;
+    background: rgb(0 0 0 / 10%);
+    border-width: 0;
+  }
+
+  50% {
+    width: 2em;
+    height: 2em;
+    background: var(--primary);
+    border: 0;
+    opacity: 0.6;
+  }
+
+  100% {
+    width: 2em;
+    height: 2em;
+    background: var(--primary);
+    border: 0;
+    opacity: 1;
+  }
 }

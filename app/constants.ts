@@ -34,7 +34,6 @@ export const CUSTOMER_NAV_LINKS_ARR = [
 ];
 
 export const ORDER_SLIP_ROUTE = "./orders/slip";
-export const PAYMENT_AMOUNT_ROUTE = "/admin/orders/payment/amount";
 
 // Employee Nav Links Routes
 export const EMPLOYEE_DASHBOARD_ROUTE = "/admin";
@@ -42,8 +41,8 @@ export const COMPANY_MANAGEMENT_ROUTE = "/admin/company-management";
 export const EMPLOYEES_ROUTE = "/admin/employees";
 export const EMPLOYEE_ORDERS_ROUTE = "/admin/orders";
 export const PURCHASES_ROUTE = "/admin/purchases";
-export const EMPLOYEE_PRODUCTS_ROUTE = "/admin/orders/products";
-export const PAYMENTS_ROUTE = "/admin/orders/payment";
+export const EMPLOYEE_PRODUCTS_ROUTE = "/admin/products";
+export const PAYMENTS_ROUTE = "/admin/payments";
 export const EXPENSES_ROUTE = "/admin/expenses";
 export const REPORTS_ROUTE = "/admin/reports";
 export const ADMIN_CUSTOMER_ROUTE = `${EMPLOYEE_DASHBOARD_ROUTE}/customer`;
@@ -56,6 +55,8 @@ export const CREATE_PURCHASES_ROUTE = `${PURCHASES_ROUTE}/[purchaseId]/edit`;
 export const ADD_EXPENSES_ROUTE = `${EXPENSES_ROUTE}/[expenseId]/edit`;
 export const INCOME_STATEMENT_ROUTE = `${REPORTS_ROUTE}/income-statement`;
 export const ADMIN_CUSTOMER_EDIT_ROUTE = `${ADMIN_CUSTOMER_ROUTE}/[customerId]/edit`;
+export const ADMIN_PAYMENT_AMOUNT_ROUTE =
+  "/admin/orders/orderId/payment/paymentMethod/amount";
 
 export const EMPLOYEE_NAV_LINKS_ARR = [
   { path: EMPLOYEE_DASHBOARD_ROUTE, name: "Dashboard" },
@@ -70,8 +71,9 @@ export const EMPLOYEE_NAV_LINKS_ARR = [
 ];
 
 export const COMPANY_DETAILS_ROUTE = "/admin/company-details/";
-export const COMPANY_EDIT_HEADER_ROUTE = "/admin/company-details/edit-header";
-export const COMPANY_EDIT_DETAILS_ROUTE = "/admin/company-details/edit-details";
+export const COMPANY_EDIT_HEADER_ROUTE =
+  "/admin/company/profile/visibility-settings";
+export const COMPANY_EDIT_DETAILS_ROUTE = "/admin/company/profile/edit";
 
 export const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";

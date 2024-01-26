@@ -2,6 +2,7 @@ import SaveButton from "@/components/Buttons/SaveButton";
 import EditRoleForm from "@/components/Forms/EditRoleForm";
 import styles from "./details.module.scss";
 import React from "react";
+import { CgCheck } from "react-icons/cg";
 
 const navLinksTitle = [
   "Employee Dashboard",
@@ -40,9 +41,24 @@ const Page = () => {
                 {access.map((accessItem, index) => {
                   return (
                     <div className={styles.accessListItem} key={index}>
-                      <p>
+                      <p className="me-2">
                         <b>{accessItem}</b>
                       </p>
+                      <div className="center">
+                        <label className={styles.label}>
+                          <input
+                            className={styles.labelCheckbox}
+                            type="checkbox"
+                          />
+                          <span className={styles.labelText}>
+                            <span className={styles.labelCheck}>
+                              <i className={styles.myIcon}>
+                                <CgCheck />
+                              </i>
+                            </span>
+                          </span>
+                        </label>
+                      </div>
                     </div>
                   );
                 })}

@@ -22,7 +22,7 @@ const Page = () => {
     <div style={{ display: "grid", gap: 16 }}>
       <div className="d-flex justify-content-between">
         <h1 style={{ color: "var(--primary)" }}>Payment Amount</h1>
-        <SaveButton buttonType="submit" />
+        <SaveButton buttonType="submit" form="submitPayment" />
       </div>
 
       <CounterButton />
@@ -40,7 +40,7 @@ const Page = () => {
         })}
       </div>
 
-      <PaymentReferenceNumberForm />
+      <PaymentReferenceNumberForm id="submitPayment" />
     </div>
   );
 };

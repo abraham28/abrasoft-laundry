@@ -7,7 +7,13 @@ import { registerFormSchema, Inputs } from "./validators";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-const PaymentReferenceNumberForm = () => {
+interface PaymentReferenceNumberFormProps {
+  id: string;
+}
+
+const PaymentReferenceNumberForm: React.FC<PaymentReferenceNumberFormProps> = ({
+  id,
+}) => {
   const {
     register,
     handleSubmit,
@@ -19,7 +25,12 @@ const PaymentReferenceNumberForm = () => {
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
   return (
-    <Form className={styles.form} noValidate onSubmit={handleSubmit(onSubmit)}>
+    <Form
+      className={styles.form}
+      id={id}
+      noValidate
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <FormGroup>
         <FormLabel>Payment Reference Number for Online Payments</FormLabel>
         <FormControl
