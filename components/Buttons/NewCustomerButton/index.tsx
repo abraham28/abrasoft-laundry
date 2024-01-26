@@ -3,10 +3,16 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { Button } from "react-bootstrap";
 
-const NewCustomerButton = () => {
+interface NewCustomerButtonProps {
+  routerPath: string;
+}
+
+const NewCustomerButton: React.FC<NewCustomerButtonProps> = ({
+  routerPath,
+}) => {
   const router = useRouter();
   return (
-    <Button onClick={() => router.push("profile/edit")} variant="primary">
+    <Button onClick={() => router.push(routerPath)} variant="primary">
       New Customer
     </Button>
   );

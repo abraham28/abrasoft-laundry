@@ -7,8 +7,7 @@ const OrderHistory = () => {
         <b>Mon &#44; December 25 &#44; 1:24PM</b>
       </p>
       <p>
-        <b>Status&#58;</b>
-        <span>Ongoing</span>
+        <b>Status&#58;</b> <span>Ongoing</span>
       </p>
       <p>
         <b>

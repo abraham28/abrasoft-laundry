@@ -1,5 +1,5 @@
 import LoyaltyAccount from "@/components/Client/LoyaltyAccount";
-import OrderHistory from "@/components/Client/OrderHistory";
+import OrderDetails from "@/components/Client/OrderDetails";
 import React from "react";
 
 const Page = () => {
@@ -13,7 +13,7 @@ const Page = () => {
       </h1>
       <LoyaltyAccount />
       <p>History</p>
-      <OrderHistory />
+      <OrderDetails />
     </div>
   );
 };

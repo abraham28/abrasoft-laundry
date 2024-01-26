@@ -2,7 +2,7 @@ import SearchBar from "@/components/Admin/SearchBar";
 import React from "react";
 import SaveButton from "@/components/Buttons/SaveButton";
 import CounterButton from "@/components/Buttons/CounterButton";
-import { Image } from "react-bootstrap";
+import { Form, Image } from "react-bootstrap";
 import styles from "./Edit.module.scss";
 import CashAmountForm from "@/components/Forms/CashAmoutForm";
 import GCashAmountForm from "@/components/Forms/GCashAmoutForm";
@@ -72,8 +72,11 @@ const Page = () => {
       <p>
         <b>Payments Made</b>
       </p>
-      <CashAmountForm id="purchaseForm" />
-      <GCashAmountForm id="purchaseForm" />
+      <Form id="purchaseForm">
+        <CashAmountForm />
+        <GCashAmountForm id="purchaseForm" />
+      </Form>
+
       <SearchBar placeholder="Add payment methods" />
     </div>
   );

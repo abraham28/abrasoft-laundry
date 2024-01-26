@@ -1,4 +1,4 @@
-import { PAYMENT_AMOUNT_ROUTE } from "@/app/constants";
+import { ADMIN_PAYMENT_AMOUNT_ROUTE } from "@/app/constants";
 import SearchBar from "@/components/Admin/SearchBar";
 import SaveButton from "@/components/Buttons/SaveButton";
 import React from "react";
@@ -22,7 +22,7 @@ const Page = () => {
           <li className={styles.listItem} key={index}>
             <Link
               className={styles.linkListItem}
-              href={`${PAYMENT_AMOUNT_ROUTE}`}
+              href={ADMIN_PAYMENT_AMOUNT_ROUTE}
             >
               <p>
                 <b className={styles.cash}>{dataItem}</b>
