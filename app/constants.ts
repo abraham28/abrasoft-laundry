@@ -46,6 +46,7 @@ export const EMPLOYEE_PRODUCTS_ROUTE = "/admin/orders/products";
 export const PAYMENTS_ROUTE = "/admin/orders/payment";
 export const EXPENSES_ROUTE = "/admin/expenses";
 export const REPORTS_ROUTE = "/admin/reports";
+export const ADMIN_CUSTOMER_ROUTE = `${EMPLOYEE_DASHBOARD_ROUTE}/customer`;
 export const ADMIN_PRODUCTS_ROUTE = "/admin/products";
 export const ROLES_ROUTE = `${EMPLOYEE_DASHBOARD_ROUTE}/roles`;
 export const ROLES_MANAGEMENT_EDIT_ROUTE = `${ROLES_ROUTE}/[userId]/details`;
@@ -54,6 +55,7 @@ export const ADMIN_NEW_EDIT_PRODUCT_ROUTE = `${ADMIN_PRODUCTS_ROUTE}/[productId]
 export const CREATE_PURCHASES_ROUTE = `${PURCHASES_ROUTE}/[purchaseId]/edit`;
 export const ADD_EXPENSES_ROUTE = `${EXPENSES_ROUTE}/[expenseId]/edit`;
 export const INCOME_STATEMENT_ROUTE = `${REPORTS_ROUTE}/income-statement`;
+export const ADMIN_CUSTOMER_EDIT_ROUTE = `${ADMIN_CUSTOMER_ROUTE}/[customerId]/edit`;
 
 export const EMPLOYEE_NAV_LINKS_ARR = [
   { path: EMPLOYEE_DASHBOARD_ROUTE, name: "Dashboard" },
